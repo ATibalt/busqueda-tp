@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring accessors="true" comment="Delete 4 element(s) from project &apos;Aspiradora&apos;&#x0D;&#x0A;- Original project: &apos;Aspiradora&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     0.xml&#x0D;&#x0A;     1.xml&#x0D;&#x0A;     2.xml&#x0D;&#x0A;     3.xml" description="Delete elements" element1="TreeML/2.xml" element2="TreeML/0.xml" element3="TreeML/1.xml" element4="TreeML/3.xml" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="4" stamp="1494270109764" subPackages="false" version="1.0"/>
-</session>

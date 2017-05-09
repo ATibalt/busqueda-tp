@@ -1,9 +1,0 @@
-INDEX VERSION 1.126+D:\Mis documentos\idem-ia\.metadata\.plugins\org.eclipse.jdt.core
-4146874359.index
-1854974820.index
-1581587138.index
-1874934554.index
-3792919871.index
-2613080665.index
-1635222915.index
-566272483.index
