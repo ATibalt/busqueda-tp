@@ -1,10 +1,5 @@
 package frsf.cidisi.exercise.modelo.search;
 
-import java.util.List;
-
-import domain.Calle;
-import domain.Esquina;
-import domain.Mapa;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 
@@ -14,14 +9,10 @@ import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 public class EstadoPatrullero extends SearchBasedAgentState {
 	
 	//TODO: Setup Variables
-    private Esquina posicionAgente;
-    private Esquina posicionAlerta;
-    //TODO: cambiar lista de eventos por lista de calles cortadas y lista de calles congestionadas
+    //private Other posicionAgente;
+    //private Other posicionAlerta;
     //private Other listaEventos;
-	private List<Calle> callesCortadas;
-	private List<Calle> callesCongestionadas;
 	
-	private Mapa mapa;
 
     public EstadoPatrullero() {
     
@@ -41,7 +32,7 @@ public class EstadoPatrullero extends SearchBasedAgentState {
     @Override
     public SearchBasedAgentState clone() {
         
-		//TODO: Complete Method. IMPORTANTE !! realizar bien este metodo
+		//TODO: Complete Method
 		
         return null;
     }

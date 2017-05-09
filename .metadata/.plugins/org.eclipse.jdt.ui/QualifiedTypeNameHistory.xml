@@ -4,4 +4,9 @@
 <fullyQualifiedTypeName name="org.jgrapht.DirectedGraph"/>
 <fullyQualifiedTypeName name="edu.uci.ics.jung.graph.DirectedGraph"/>
 <fullyQualifiedTypeName name="edu.uci.ics.jung.graph.DirectedSparseMultigraph"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="domain.Esquina"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="domain.Calle"/>
+<fullyQualifiedTypeName name="domain.Mapa"/>
 </qualifiedTypeNameHistroy>
