@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.jgrapht.Graph"/>
+<fullyQualifiedTypeName name="org.jgrapht.DirectedGraph"/>
+<fullyQualifiedTypeName name="edu.uci.ics.jung.graph.DirectedGraph"/>
+<fullyQualifiedTypeName name="edu.uci.ics.jung.graph.DirectedSparseMultigraph"/>
+</qualifiedTypeNameHistroy>

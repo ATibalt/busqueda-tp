@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idemia:AgentModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:idemia="utn.frsf.cidisi">
+  <Environment name="AmbientePatrullero">
+    <EnvironmentState name="EstadoAmbiente">
+      <DataStructure name="callesCortadas" type="Other"/>
+      <DataStructure name="callesCongestionadas" type="Other"/>
+      <DataStructure name="posicionAlerta" type="Other"/>
+      <DataStructure name="posicionAgente" type="Other"/>
+    </EnvironmentState>
+  </Environment>
+  <Agent name="Patrullero">
+    <Strategy xsi:type="idemia:Search" searchStrategy="UniformCostSearch"/>
+    <Goal name="ObjetivoPatrullero" value=" posicionAgente == posicionAlerta"/>
+    <AgentState name="EstadoPatrullero">
+      <DataStructure name="posicionAgente" type="Other"/>
+      <DataStructure name="posicionAlerta" type="Other"/>
+      <DataStructure name="listaEventos" type="Other"/>
+    </AgentState>
+  </Agent>
+  <Actions execute_by="//@Agent" executed_on="//@Environment" name="IrAnodoX"/>
+  <Perceptions perceived_on="//@Environment" perceived_by="//@Agent" name="cortecalle"/>
+  <Perceptions perceived_on="//@Environment" perceived_by="//@Agent" name="congestioncalle"/>
+  <Perceptions perceived_on="//@Environment" perceived_by="//@Agent" name="alerta"/>
+</idemia:AgentModel>
