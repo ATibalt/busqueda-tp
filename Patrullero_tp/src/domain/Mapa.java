@@ -8,8 +8,14 @@ import edu.uci.ics.jung.graph.DirectedSparseMultigraph;
 
 public class Mapa {
 	
+	DirectedGraph<Esquina, Calle> g;
+	
+	public Mapa(){
+		this.Crear();
+	}
+	
 	public void Crear() {
-		DirectedGraph<Esquina, Calle> g = new DirectedSparseMultigraph<Esquina, Calle>();
+		g = new DirectedSparseMultigraph<Esquina, Calle>();
 		
 		Esquina e1 = new Esquina("e1");
 		Esquina e2 = new Esquina("e2");
@@ -27,9 +33,9 @@ public class Mapa {
 		g.addEdge(c2, e2, e3);
 		g.addEdge(c3, e3, e1);
 		
-		System.out.println(g.getSuccessors(e2));
+		System.out.println("Sucesores"+g.getSuccessors(e2));
 		
-		System.out.println(g.toString());
+		System.out.println("Grafo"+g.toString());
 	}
 	
 	public List<Calle> getCallesCortadas(){
@@ -54,5 +60,9 @@ public class Mapa {
 		Esquina posAgente = null;
 		
 		return posAgente;		
+	}
+	
+	public List<Esquina> getAdyacentes(Esquina esquina){
+		return (List<Esquina>) g.getSuccessors(esquina);
 	}
 }

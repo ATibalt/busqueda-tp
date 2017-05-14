@@ -3,6 +3,7 @@ package domain;
 public class Calle {
 	String nombre;
 	int altura;
+	
 	public String getNombre() {
 		return nombre;
 	}

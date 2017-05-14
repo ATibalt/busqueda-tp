@@ -1,5 +1,6 @@
 package frsf.cidisi.exercise.modelo.search.actions;
-
+import java.util.List;
+import domain.Esquina;
 import frsf.cidisi.exercise.modelo.search.*;
 import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
@@ -14,8 +15,9 @@ public class IrAnodoX extends SearchAction {
      */
     @Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
-        EstadoPatrullero agState = (EstadoPatrullero) s;
+        EstadoPatrullero agentState = (EstadoPatrullero) s;
         
+        List<Esquina> esquinasAdyacentes = agentState.getMapa().getAdyacentes(agentState.getposicionAgente());
         // TODO: Use this conditions
         // PreConditions: null
         // PostConditions: null

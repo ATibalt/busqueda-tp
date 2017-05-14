@@ -12,7 +12,7 @@ public class Heuristic implements IEstimatedCostFunction {
     /**
      * It returns the estimated cost to reach the goal from a NTree node.
      */
-    @Override
+    //TODO: comento esto porque tira error @Override
     public double getEstimatedCost(NTree node) {
         EstadoPatrullero agState = (EstadoPatrullero) node.getAgentState();
 	

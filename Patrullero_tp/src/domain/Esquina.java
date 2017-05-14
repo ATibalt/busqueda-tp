@@ -10,4 +10,11 @@ public class Esquina {
 	public String toString() {
 		return "Esq."+nombre;
 	}
+	
+	public boolean Equals(Esquina obj){
+		if( this.nombre.equals(obj.nombre)){
+			return true;
+		}
+		return false;
+	}
 }
