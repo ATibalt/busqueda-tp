@@ -1,5 +1,7 @@
 package frsf.cidisi.exercise.modelo.search.actions;
 import java.util.List;
+
+import domain.Calle;
 import domain.Esquina;
 import frsf.cidisi.exercise.modelo.search.*;
 import frsf.cidisi.faia.agent.search.SearchAction;
@@ -9,18 +11,29 @@ import frsf.cidisi.faia.state.EnvironmentState;
 
 public class IrAnodoX extends SearchAction {
 
-    /**
+	private Esquina nodoX;
+	
+    public IrAnodoX(Esquina nodoX) {
+		super();
+		this.nodoX = nodoX;
+	}
+	/**
      * This method updates a tree node state when the search process is running.
      * It does not updates the real world state.
      */
+	
     @Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
         EstadoPatrullero agentState = (EstadoPatrullero) s;
+        Esquina posicionAgente = agentState.getposicionAgente();
+        List<Esquina> esquinasAdyacentes = agentState.getMapa().getAdyacentes(posicionAgente);
+        List<Calle> callesCortadas = agentState.getCallesCortadas();
         
-        List<Esquina> esquinasAdyacentes = agentState.getMapa().getAdyacentes(agentState.getposicionAgente());
-        // TODO: Use this conditions
-        // PreConditions: null
-        // PostConditions: null
+        if(esquinasAdyacentes.contains(nodoX))//Ver si anda bien el contains!
+        {
+        	//ver si la calle que conecta el nodo actual con el nodo x no esta cortada
+        	
+        }
         
         return null;
     }

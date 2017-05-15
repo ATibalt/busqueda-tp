@@ -1,0 +1,25 @@
+INDEX VERSION 1.126+D:\IA - trabajo practico\busqueda-tp\.metadata\.plugins\org.eclipse.jdt.core
+1144188029.index
+1874934554.index
+2613080665.index
+4149142647.index
+898289412.index
+2706502329.index
+3015671029.index
+27713834.index
+1075156909.index
+3792919871.index
+3626931047.index
+1820024274.index
+4230971965.index
+3256372620.index
+384216248.index
+739078005.index
+728132027.index
+3521617142.index
+566272483.index
+2708239607.index
+4018706093.index
+4146874359.index
+683184654.index
+3798427131.index

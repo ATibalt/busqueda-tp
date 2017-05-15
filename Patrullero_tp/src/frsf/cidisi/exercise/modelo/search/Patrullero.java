@@ -10,7 +10,11 @@ import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.solver.search.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
+
+import domain.Esquina;
 
 public class Patrullero extends SearchBasedAgent {
 
@@ -25,8 +29,12 @@ public class Patrullero extends SearchBasedAgent {
 
         // Create the operators
         Vector<SearchAction> operators = new Vector<SearchAction>();
-        operators.addElement(new IrAnodoX());	
-
+        //TODO: hacer un for con la lista de las esquinas del mapa y hacer un new IrAnodoX(Esquina esquina) con cada una
+        List<Esquina> nodos = new ArrayList<Esquina>();//TODO: agState.getMapa().getEsquinas();
+        for(Esquina nodo : nodos){
+        	operators.addElement(new IrAnodoX(nodo));
+        }
+        	
         // Create the Problem which the agent will resolve
         Problem problem = new Problem(agGoal, agState, operators);
         this.setProblem(problem);
@@ -47,7 +55,7 @@ public class Patrullero extends SearchBasedAgent {
 
         /* Generate an XML file with the search tree. It can also be generated
          * in other formats like PDF with PDF_TREE */
-        searchSolver.setVisibleTree(Search.GRAPHVIZ_TREE);
+        searchSolver.setVisibleTree(Search.EFAIA_TREE);
 
         // Set the Search searchSolver.
         this.setSolver(searchSolver);

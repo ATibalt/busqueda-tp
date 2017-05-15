@@ -3,7 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/faia"/>
-	<classpathentry kind="lib" path="C:/IDEM-IA/jung2-2_0_1/jung-api-2.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/IDEM-IA/jung2-2_0_1/jung-graph-impl-2.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/IA - trabajo practico/busqueda-tp/jung2-2_0_1/collections-generic-4.01.jar"/>
+	<classpathentry kind="lib" path="D:/IA - trabajo practico/busqueda-tp/jung2-2_0_1/jung-api-2.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/IA - trabajo practico/busqueda-tp/jung2-2_0_1/jung-graph-impl-2.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

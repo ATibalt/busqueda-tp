@@ -1,0 +1,51 @@
+what,kind,bundleId,bundleVersion,description,time
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.text.contentAssist.proposals",1494881931013
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.text.contentAssist.proposals",1494881935409
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.text.contentAssist.proposals",1494881943153
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1494881963853
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1494881963967
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1494881969869
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1494881970010
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1494881979142
+activated,editor,org.eclipse.jdt.ui,3.5.0.v20090604,"org.eclipse.jdt.ui.CompilationUnitEditor",1494881985966
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1494882387688
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1494882592727
+started,bundle,org.eclipse.equinox.p2.ui,1.0.100.v20090527-1812,"org.eclipse.equinox.p2.ui",1494882595491
+started,bundle,org.eclipse.equinox.p2.ui.sdk,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.ui.sdk",1494882595493
+started,bundle,org.eclipse.equinox.p2.metadata,1.0.100.v20090525,"org.eclipse.equinox.p2.metadata",1494882595650
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1494882597257
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.paste",1494882600852
+started,bundle,org.eclipse.equinox.p2.extensionlocation,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.extensionlocation",1494882603477
+started,bundle,org.eclipse.equinox.p2.updatesite,1.0.100.v20090525,"org.eclipse.equinox.p2.updatesite",1494882607400
+started,bundle,org.eclipse.equinox.p2.publisher,1.0.0.v20090527-1812,"org.eclipse.equinox.p2.publisher",1494882607412
+error,log,,,"Unable to load the repository http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1336",1494882611744
+started,bundle,org.eclipse.equinox.p2.artifact.repository,1.0.100.v20090527-1812,"org.eclipse.equinox.p2.artifact.repository",1494882613288
+started,bundle,org.eclipse.equinox.p2.touchpoint.eclipse,1.0.100.v20090611-1224,"org.eclipse.equinox.p2.touchpoint.eclipse",1494882649060
+error,log,,,"Operation details",1494882653308
+error,log,,,"Operation details",1494882653309
+error,log,,,"Operation details",1494882653314
+error,log,,,"Operation details",1494882653346
+error,log,,,"Operation details",1494882666338
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.paste",1494882684293
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.paste",1494882685431
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.edit.paste",1494882698790
+error,log,,,"Unable to load the repository http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1336",1494882705389
+error,log,,,"Operation details",1494882720299
+error,log,,,"Operation details",1494882720305
+error,log,,,"Operation details",1494882723626
+error,log,,,"Operation details",1494882734810
+error,log,,,"Operation details",1494882734849
+error,log,,,"Operation details",1494882752559
+error,log,,,"Operation details",1494882752566
+error,log,,,"Operation details",1494882759497
+error,log,,,"Operation details",1494882789346
+error,log,,,"Operation details",1494882789354
+error,log,,,"Operation details",1494882797691
+error,log,,,"Operation details",1494882797730
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1494882807342
+executed,command,org.eclipse.equinox.p2.ui.sdk,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.ui.sdk.install",1494882807362
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1494882814203
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1494882872876
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1494882876133
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1494882912857
+executed,command,org.eclipse.equinox.p2.ui.sdk,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.ui.sdk.install",1494882912873
