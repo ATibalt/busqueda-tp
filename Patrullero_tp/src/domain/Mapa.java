@@ -267,6 +267,12 @@ public class Mapa {
 		Calle Go7 = new Calle("Gorostiaga", 700, false, false);
 		Calle Go8 = new Calle("Gorostiaga", 800, false, false);
 		Calle Go9 = new Calle("Gorostiaga", 900, false, false);
+		Calle Go10 = new Calle("Gorostiaga", 1000, false, false);
+		Calle Go11 = new Calle("Gorostiaga", 1100, false, false);
+		Calle Go12 = new Calle("Gorostiaga", 1200, false, false);
+
+		Calle Mo11 = new Calle("Mosquera", 1100, false, false);
+		Calle Mo12 = new Calle("Mosquera", 1200, false, false);
 
 		Calle MS7 = new Calle("Marco Sastre", 700, false, false);
 		Calle MS8 = new Calle("Marco Sastre", 800, false, false);
@@ -300,6 +306,23 @@ public class Mapa {
 		Calle JMZ12 = new Calle("Jose Maria Zuviria", 1200, false, false);
 		Calle JMZ13 = new Calle("Jose Maria Zuviria", 1300, false, false);
 		Calle JMZ14 = new Calle("Jose Maria Zuviria", 1400, false, false);
+		
+		Calle La7 = new Calle("Lavaisse", 700, false, false);
+		Calle La8 = new Calle("Lavaisse", 800, false, false);
+		Calle La9 = new Calle("Lavaisse", 900, false, false);
+		Calle La10 = new Calle("Lavaisse", 1000, false, false);
+		Calle La11 = new Calle("Lavaisse", 1100, false, false);
+		Calle La12 = new Calle("Lavaisse", 1200, false, false);
+		
+		Calle Ll6 = new Calle("Llerena", 600, false, false);
+		Calle Ll7 = new Calle("Llerena", 700, false, false);
+		Calle Ll8 = new Calle("Llerena", 800, false, false);
+		Calle Ll9 = new Calle("Llerena", 900, false, false);
+		Calle Ll10 = new Calle("Llerena", 1000, false, false);
+		Calle Ll11 = new Calle("Llerena", 1100, false, false);
+		Calle Ll12 = new Calle("Llerena", 1200, false, false);
+		
+		Calle Pu8 = new Calle("Pujato", 800, false, false);
 		
 		Esquina e1 = new Esquina("e1");
 		Esquina e2 = new Esquina("e2");
