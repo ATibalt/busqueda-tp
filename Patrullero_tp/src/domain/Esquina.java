@@ -1,7 +1,13 @@
 package domain;
 
+/**
+ * @author Leandro
+ *
+ */
 public class Esquina {
+	
 	String nombre;
+	
 	
 	public Esquina(String nombre) {
 		this.nombre = nombre;
