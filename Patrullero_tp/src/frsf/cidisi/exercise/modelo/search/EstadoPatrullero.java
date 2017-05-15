@@ -11,12 +11,9 @@ import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
  */
 public class EstadoPatrullero extends SearchBasedAgentState {
 	
-	//TODO: Setup Variables
 	private Mapa mapa;
     private Esquina posicionAgente;
     private Esquina posicionAlerta;
-    //TODO: cambiar lista de eventos por lista de calles cortadas y lista de calles congestionadas
-    //private Other listaEventos;
 	private List<Calle> callesCortadas;
 	private List<Calle> callesCongestionadas;
 	
@@ -51,7 +48,6 @@ public class EstadoPatrullero extends SearchBasedAgentState {
      */
     @Override
     public void initState() {
-        //TODO: Complete Method - setea el estado incial
     	mapa = new Mapa();
     	posicionAgente = mapa.getPosicionAgente();
     	posicionAlerta = mapa.getAlerta();
@@ -83,9 +79,6 @@ public class EstadoPatrullero extends SearchBasedAgentState {
          }
          return posicionAgente.equals(((EstadoPatrullero) obj).getposicionAgente());
     }
-
-    //TODO: Complete this section with agent-specific methods
-    // The following methods are agent-specific:
    	
 	 public Esquina getposicionAgente(){
 	    return posicionAgente;
@@ -99,13 +92,7 @@ public class EstadoPatrullero extends SearchBasedAgentState {
      public void setposicionAlerta(Esquina arg){
         posicionAlerta = arg;
      }
-//     public Other getlistaEventos(){
-//        return listaEventos;
-//     }
-//     public void setlistaEventos(Other arg){
-//        listaEventos = arg;
-//     }
-
+     
 	public Mapa getMapa() {
 		return mapa;
 	}

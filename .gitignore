@@ -1,0 +1,9 @@
+**/.settings/
+bin/
+**/bin/
+.idea/
+**/.idea/
+*.eml
+*.iml
+.metadata/
+**/.classpath
