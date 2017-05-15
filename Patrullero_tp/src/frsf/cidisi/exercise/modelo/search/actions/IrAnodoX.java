@@ -25,6 +25,7 @@ public class IrAnodoX extends SearchAction {
     @Override
     public SearchBasedAgentState execute(SearchBasedAgentState s) {
         EstadoPatrullero agentState = (EstadoPatrullero) s;
+        
         Esquina posicionAgente = agentState.getposicionAgente();
         List<Esquina> esquinasAdyacentes = agentState.getMapa().getAdyacentes(posicionAgente);
         List<Calle> callesCortadas = agentState.getCallesCortadas();
@@ -32,9 +33,11 @@ public class IrAnodoX extends SearchAction {
         if(esquinasAdyacentes.contains(nodoX))//Ver si anda bien el contains!
         {
         	//ver si la calle que conecta el nodo actual con el nodo x no esta cortada
-        	
+        	Calle calleEntreEsquinas = null; //TODO: agentState.getCalle(posicionAgente, nodoX);
+        	if(!callesCortadas.contains(calleEntreEsquinas)){
+        		return null;
+        	}
         }
-        
         return null;
     }
 
