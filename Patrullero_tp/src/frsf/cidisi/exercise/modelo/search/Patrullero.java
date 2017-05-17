@@ -29,7 +29,7 @@ public class Patrullero extends SearchBasedAgent {
 
         // Create the operators
         Vector<SearchAction> operators = new Vector<SearchAction>();
-        //TODO: hacer un for con la lista de las esquinas del mapa y hacer un new IrAnodoX(Esquina esquina) con cada una
+        //iteración de la lista de las esquinas del mapa y creación de IrAnodoX(Esquina esquina) con cada una de las esquinas
         List<Esquina> nodos = new ArrayList<Esquina>();//TODO: agState.getMapa().getEsquinas();
         for(Esquina nodo : nodos){
         	operators.addElement(new IrAnodoX(nodo));

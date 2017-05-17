@@ -12,10 +12,12 @@ import frsf.cidisi.faia.state.EnvironmentState;
 public class IrAnodoX extends SearchAction {
 
 	private Esquina nodoX;
+	private double costo;
 	
     public IrAnodoX(Esquina nodoX) {
 		super();
 		this.nodoX = nodoX;
+		this.costo = 0;
 	}
 	/**
      * This method updates a tree node state when the search process is running.
@@ -29,13 +31,21 @@ public class IrAnodoX extends SearchAction {
         Esquina posicionAgente = agentState.getposicionAgente();
         List<Esquina> esquinasAdyacentes = agentState.getMapa().getAdyacentes(posicionAgente);
         List<Calle> callesCortadas = agentState.getCallesCortadas();
+        List<Calle> callesCongestionadas = agentState.getCallesCongestionadas();
         
         if(esquinasAdyacentes.contains(nodoX))//Ver si anda bien el contains!
-        {
-        	//ver si la calle que conecta el nodo actual con el nodo x no esta cortada
+        {	//calle entre la esquina actual del agente y la esquina a la que irá
         	Calle calleEntreEsquinas = null; //TODO: agentState.getCalle(posicionAgente, nodoX);
+        	
         	if(!callesCortadas.contains(calleEntreEsquinas)){
-        		return null;
+        		//si la calle no está cortada, entonces el agente pasa a estar en la esquina X
+        		agentState.setposicionAgente(nodoX);
+        		
+        		if(callesCongestionadas.contains(calleEntreEsquinas)){
+        			//si la calle no está cortada pero si congestionada, tendrá un costo ir a la esquina X
+        			costo = 10;
+        		}
+        		return agentState;
         	}
         }
         return null;
@@ -47,20 +57,25 @@ public class IrAnodoX extends SearchAction {
     @Override
     public EnvironmentState execute(AgentState ast, EnvironmentState est) {
         EstadoAmbiente environmentState = (EstadoAmbiente) est;
-        EstadoPatrullero agState = ((EstadoPatrullero) ast);
+        EstadoPatrullero agentState = ((EstadoPatrullero) ast);
 
-        // TODO: Use this conditions
-        // PreConditions: null
-        // PostConditions: null
+        Esquina posicionAgente = agentState.getposicionAgente();
+        List<Esquina> esquinasAdyacentes = agentState.getMapa().getAdyacentes(posicionAgente);
+        List<Calle> callesCortadas = agentState.getCallesCortadas();
         
-        if (true) {
-            // Update the real world
-            
-            // Update the agent state
-            
-            return environmentState;
+        if(esquinasAdyacentes.contains(nodoX)) {
+        	
+        	Calle calleEntreEsquinas = null; //TODO: agentState.getCalle(posicionAgente, nodoX);
+        	
+        	if(!callesCortadas.contains(calleEntreEsquinas)){
+        		// Update the real world
+                environmentState.setposicionAgente(nodoX);
+                // Update the agent state
+        		agentState.setposicionAgente(nodoX);
+        		
+        		return environmentState;
+        	}  
         }
-
         return null;
     }
 
@@ -69,7 +84,8 @@ public class IrAnodoX extends SearchAction {
      */
     @Override
     public Double getCost() {
-        return new Double(0);
+    	return this.costo;
+      //  return new Double(0);
     }
 
     /**
@@ -78,6 +94,6 @@ public class IrAnodoX extends SearchAction {
      */
     @Override
     public String toString() {
-        return "IrAnodoX";
+        return "IrAnodoX: "+nodoX.toString();
     }
 }

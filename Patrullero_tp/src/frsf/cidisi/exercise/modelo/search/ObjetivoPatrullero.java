@@ -9,9 +9,9 @@ public class ObjetivoPatrullero extends GoalTest {
 
     @Override
     public boolean isGoalState (AgentState agentState) {
-    
-    	// TODO: Complete Method
-        if  (true) //( posicionAgente == posicionAlerta)
+    	EstadoPatrullero estadoPatrullero = (EstadoPatrullero) agentState;
+    	
+        if  (estadoPatrullero.getposicionAgente().Equals(estadoPatrullero.getposicionAlerta())) //( posicionAgente == posicionAlerta)
         	{
             return true;
         	}

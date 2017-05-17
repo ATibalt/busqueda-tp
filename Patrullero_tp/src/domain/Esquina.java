@@ -13,6 +13,10 @@ public class Esquina {
 		this.nombre = nombre;
 	}
 	
+	public Esquina(){
+		
+	}
+	
 	public String toString() {
 		return "Esq."+nombre;
 	}
@@ -22,5 +26,19 @@ public class Esquina {
 			return true;
 		}
 		return false;
+	}
+	
+	public Esquina clone(){
+		Esquina esquina = new Esquina();
+		esquina.setNombre(this.nombre);
+		return esquina;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 }

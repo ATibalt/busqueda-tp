@@ -17,6 +17,8 @@ public class EstadoPatrullero extends SearchBasedAgentState {
 	private List<Calle> callesCortadas;
 	private List<Calle> callesCongestionadas;
 	
+	//TODO: costo como atributo? Ver ejemplo snake, incrementan el costo en el primer execute de una action
+	
     public EstadoPatrullero() {
         this.initState();
     }
@@ -27,10 +29,15 @@ public class EstadoPatrullero extends SearchBasedAgentState {
      */
     @Override
     public SearchBasedAgentState clone() {
-        
-		//TODO: Complete Method. IMPORTANTE !! realizar bien este metodo
 		
-        return null;
+		EstadoPatrullero estadoClone = new EstadoPatrullero();
+		estadoClone.setposicionAgente(posicionAgente.clone());
+		estadoClone.setposicionAlerta(posicionAlerta.clone());
+		//TODO: hacer clone
+		//estadoClone.setMapa(mapa);
+		//estadoClone.setCallesCortadas(mapa.getCallesCortadas());
+		//estadoClone.setCallesCongestionadas(mapa.getCallesCongestionadas());
+        return estadoClone;
     }
 
     /**
@@ -39,8 +46,12 @@ public class EstadoPatrullero extends SearchBasedAgentState {
      */
     @Override
     public void updateState(Perception p) {
-        
         //TODO: Complete Method
+    	PatrulleroPerception perception = (PatrulleroPerception) p;
+    	this.setMapa(perception.getMapa());
+    	this.setposicionAlerta(perception.getPosicionAlerta());
+    	this.setCallesCortadas(this.mapa.getCallesCortadas());
+    	this.setCallesCongestionadas(this.mapa.getCallesCongestionadas());
     }
 
     /**

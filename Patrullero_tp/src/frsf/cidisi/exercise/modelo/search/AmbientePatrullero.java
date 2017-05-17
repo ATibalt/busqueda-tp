@@ -1,7 +1,6 @@
 package frsf.cidisi.exercise.modelo.search;
 
 import frsf.cidisi.faia.agent.Action;
-import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.environment.Environment;
 
 public class AmbientePatrullero extends Environment {
@@ -27,8 +26,9 @@ public class AmbientePatrullero extends Environment {
          PatrulleroPerception perception = new PatrulleroPerception();
 		
 		//TODO : Set the perceptions sensors
-        
-        // Return the perception
+         perception.setMapa(this.getEnvironmentState().getMapa());
+         perception.setPosicionAlerta(this.getEnvironmentState().getposicionAlerta());
+
         return perception;
     }
 
@@ -40,8 +40,7 @@ public class AmbientePatrullero extends Environment {
     
     public boolean agentFailed(Action actionReturned) {
 
-        EstadoAmbiente envState =
-                this.getEnvironmentState();
+        EstadoAmbiente envState = this.getEnvironmentState();
 
         // TODO: Complete Method        
 

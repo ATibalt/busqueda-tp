@@ -12,7 +12,7 @@ public class CostFunction implements IStepCostFunction {
     /**
      * This method calculates the cost of the given NTree node.
      */
-    //TODO: comento porque tira error @Override
+    @Override
     public double calculateCost(NTree node) {
         
         //TODO: Complete Method
