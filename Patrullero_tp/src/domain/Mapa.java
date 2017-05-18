@@ -323,6 +323,8 @@ public class Mapa {
 		Calle Ll12 = new Calle("Llerena", 1200, false, false);
 		
 		Calle Pu8 = new Calle("Pujato", 800, false, false);
+		Calle Pu6 = new Calle("Pujato", 600, false, false);
+		Calle Pu5 = new Calle("Pujato", 500, false, false);
 		
 		Esquina e1 = new Esquina("e1");
 		Esquina e2 = new Esquina("e2");
