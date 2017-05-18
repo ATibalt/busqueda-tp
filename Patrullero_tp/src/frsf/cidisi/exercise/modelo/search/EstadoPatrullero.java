@@ -16,6 +16,7 @@ public class EstadoPatrullero extends SearchBasedAgentState {
     private Esquina posicionAlerta;
 	private List<Calle> callesCortadas;
 	private List<Calle> callesCongestionadas;
+	private double costo;
 	
 	//TODO: costo como atributo? Ver ejemplo snake, incrementan el costo en el primer execute de una action
 	
@@ -23,6 +24,18 @@ public class EstadoPatrullero extends SearchBasedAgentState {
         this.initState();
     }
 
+    /**
+     * This method is optional, and sets the initial state of the agent.
+     */
+    @Override
+    public void initState() {
+    	mapa = new Mapa();
+    	posicionAgente = mapa.getPosicionAgente();
+    	posicionAlerta = mapa.getAlerta();
+    	callesCortadas = mapa.getCallesCortadas();
+    	callesCongestionadas = mapa.getCallesCongestionadas();
+    }
+    
     /**
      * This method clones the state of the agent. It's used in the search
      * process, when creating the search tree.
@@ -52,18 +65,6 @@ public class EstadoPatrullero extends SearchBasedAgentState {
     	this.setposicionAlerta(perception.getPosicionAlerta());
     	this.setCallesCortadas(this.mapa.getCallesCortadas());
     	this.setCallesCongestionadas(this.mapa.getCallesCongestionadas());
-    }
-
-    /**
-     * This method is optional, and sets the initial state of the agent.
-     */
-    @Override
-    public void initState() {
-    	mapa = new Mapa();
-    	posicionAgente = mapa.getPosicionAgente();
-    	posicionAlerta = mapa.getAlerta();
-    	callesCortadas = mapa.getCallesCortadas();
-    	callesCongestionadas = mapa.getCallesCongestionadas();
     }
 
     /**
@@ -128,5 +129,12 @@ public class EstadoPatrullero extends SearchBasedAgentState {
 		this.callesCongestionadas = callesCongestionadas;
 	}
 	
+	public double getCosto(){
+		return this.costo;
+	}
+	
+	public void incrementarCosto(double costo){
+		this.costo += costo;
+	}
 }
 

@@ -43,7 +43,8 @@ public class IrAnodoX extends SearchAction {
         		
         		if(callesCongestionadas.contains(calleEntreEsquinas)){
         			//si la calle no está cortada pero si congestionada, tendrá un costo ir a la esquina X
-        			costo = 10;
+        			this.costo = 10;
+        			agentState.incrementarCosto(this.costo);
         		}
         		return agentState;
         	}
