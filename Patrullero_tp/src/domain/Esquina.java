@@ -1,23 +1,28 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Leandro
  *
  */
 public class Esquina {
 	
-	String nombre;
+	List<String> calles;
 	
-	
-	public Esquina(String nombre) {
-		this.nombre = nombre;
-	}
-	
-	public Esquina(){
-		
+	public Esquina (String calle1, String calle2){
+		calles = new ArrayList<String>();
+		calles.add(calle1);
+		calles.add(calle2);
 	}
 	
 	public String toString() {
+		String nombre = "";
+		for (String c : calles) {
+			nombre += "/";
+			nombre += c;
+		}
 		return "Esq."+nombre;
 	}
 	

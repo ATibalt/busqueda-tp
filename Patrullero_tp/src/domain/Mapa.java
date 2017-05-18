@@ -73,6 +73,7 @@ public class Mapa {
 		Calle VS57 = new Calle("Velez Sarsfield", 5700, false, false);
 		Calle VS58 = new Calle("Velez Sarsfield", 5800, false, false);
 		Calle VS59 = new Calle("Velez Sarsfield", 5900, false, false);
+		Calle VS595 = new Calle("Velez Sarsfield", 5950, false, false);
 		Calle VS60 = new Calle("Velez Sarsfield", 6000, false, false);
 		Calle VS61 = new Calle("Velez Sarsfield", 6100, false, false);
 		Calle VS62 = new Calle("Velez Sarsfield", 6200, false, false);
@@ -88,8 +89,10 @@ public class Mapa {
 		Calle Ta57 = new Calle("Tacuari", 5700, false, false);
 		Calle Ta58 = new Calle("Tacuari", 5800, false, false);
 		Calle Ta59 = new Calle("Tacuari", 5900, false, false);
+		Calle Ta595 = new Calle("Tacuari", 5950, false, false);
 		Calle Ta60 = new Calle("Tacuari", 6000, false, false);
 		Calle Ta61 = new Calle("Tacuari", 6100, false, false);
+		Calle Ta615 = new Calle("Tacuari", 6150, false, false);
 		Calle Ta62 = new Calle("Tacuari", 6200, false, false);
 		Calle Ta63 = new Calle("Tacuari", 6300, false, false);
 		Calle Ta64 = new Calle("Tacuari", 6400, false, false);
@@ -101,8 +104,10 @@ public class Mapa {
 		Calle Pi57 = new Calle("Piedras", 5700, false, false);
 		Calle Pi58 = new Calle("Piedras", 5800, false, false);
 		Calle Pi59 = new Calle("Piedras", 5900, false, false);
+		Calle Pi595 = new Calle("Piedras", 5950, false, false);
 		Calle Pi60 = new Calle("Piedras", 6000, false, false);
 		Calle Pi61 = new Calle("Piedras", 6100, false, false);
+		Calle Pi615 = new Calle("Piedras", 6150, false, false);
 		Calle Pi62 = new Calle("Piedras", 6200, false, false);
 		Calle Pi63 = new Calle("Piedras", 6300, false, false);
 		Calle Pi64 = new Calle("Piedras", 6400, false, false);
@@ -112,8 +117,10 @@ public class Mapa {
 		Calle Pi68 = new Calle("Piedras", 6800, false, false);
 
 		Calle AG59 = new Calle("A Godoy", 5900, false, false);
+		Calle AG595 = new Calle("A Godoy", 5950, false, false);
 		Calle AG60 = new Calle("A Godoy", 6000, false, false);
 		Calle AG61 = new Calle("A Godoy", 6100, false, false);
+		Calle AG615 = new Calle("A Godoy", 6150, false, false);
 		Calle AG62 = new Calle("A Godoy", 6200, false, false);
 		Calle AG63 = new Calle("A Godoy", 6300, false, false);
 		Calle AG64 = new Calle("A Godoy", 6400, false, false);
@@ -128,6 +135,7 @@ public class Mapa {
 		Calle Cu63 = new Calle("Cullen", 6300, false, false);
 		Calle Cu64 = new Calle("Cullen", 6400, false, false);
 		Calle Cu65 = new Calle("Cullen", 6500, false, false);
+		Calle Cu655 = new Calle("Cullen", 6550, false, false);
 		Calle Cu66 = new Calle("Cullen", 6600, false, false);
 		Calle Cu67 = new Calle("Cullen", 6700, false, false);
 		Calle Cu68 = new Calle("Cullen", 6800, false, false);
@@ -136,6 +144,7 @@ public class Mapa {
 		Calle Ec63 = new Calle("Echague", 6300, false, false);
 		Calle Ec64 = new Calle("Echague", 6400, false, false);
 		Calle Ec65 = new Calle("Echague", 6500, false, false);
+		Calle Ec655 = new Calle("Echague", 6550, false, false);
 		Calle Ec66 = new Calle("Echague", 6600, false, false);
 		Calle Ec67 = new Calle("Echague", 6700, false, false);
 		Calle Ec68 = new Calle("Echague", 6800, false, false);
@@ -326,9 +335,23 @@ public class Mapa {
 		Calle Pu6 = new Calle("Pujato", 600, false, false);
 		Calle Pu5 = new Calle("Pujato", 500, false, false);
 		
-		Esquina e1 = new Esquina("e1");
-		Esquina e2 = new Esquina("e2");
-		Esquina e3 = new Esquina("e3");
+		Esquina e500 = new Esquina(MS7.getNombre(), Pi595.getNombre());
+		Esquina e501 = new Esquina(MS8.getNombre(), AG595.getNombre());
+		Esquina e502 = new Esquina(MS9.getNombre(), Ta595.getNombre());
+		Esquina e503 = new Esquina(MS9.getNombre(), VS595.getNombre());
+		Esquina e504 = new Esquina(PI8.getNombre(), Pi615.getNombre());
+		Esquina e505 = new Esquina(PI8.getNombre(), AG615.getNombre());
+		Esquina e506 = new Esquina(PI8.getNombre(), Ta615.getNombre());
+		Esquina e507 = new Esquina(PP55.getNombre(), Ec655.getNombre());
+		Esquina e508 = new Esquina(PP55.getNombre(), Cu65.getNombre());
+		Esquina e509 = new Esquina(PP55.getNombre(), AG65.getNombre());
+		Esquina e510 = new Esquina(PP55.getNombre(), Pi65.getNombre());
+		Esquina e511 = new Esquina(PP55.getNombre(), Ta65.getNombre());
+		Esquina e512 = new Esquina(PA58.getNombre(), La12.getNombre());
+		Esquina e513 = new Esquina(PA58.getNombre(), Ll12.getNombre());
+		Esquina e514 = new Esquina(PA58.getNombre(), DH12.getNombre());
+		
+		
 
 		g.addVertex(e1);
 		g.addVertex(e2);
