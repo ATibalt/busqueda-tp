@@ -17,7 +17,8 @@ public class Heuristic implements IEstimatedCostFunction {
         EstadoPatrullero agState = (EstadoPatrullero) node.getAgentState();
 	
 		//Method: Complete Method
-		
+		//TODO: realizar una función heuristica que calcule el costo hasta el destino (minima cantidad de aristas para llegar al destino).
+        //ver las aristas entre la posicion actual y el destino y determinar si se puede llegar y dar el costo 
         return 0;
     }
 }

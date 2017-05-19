@@ -17,7 +17,7 @@ public class IrAnodoX extends SearchAction {
     public IrAnodoX(Esquina nodoX) {
 		super();
 		this.nodoX = nodoX;
-		this.costo = 0;
+		this.costo = 5;
 	}
 	/**
      * This method updates a tree node state when the search process is running.

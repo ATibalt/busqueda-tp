@@ -26,7 +26,7 @@ public class PatrulleroPerception extends Perception {
     @Override
     public void initPerception(Agent agentIn, Environment environmentIn) {
     	
-        Patrullero agent = (Patrullero) agentIn;
+        //Patrullero agent = (Patrullero) agentIn;
         AmbientePatrullero environment = (AmbientePatrullero) environmentIn;
         EstadoAmbiente environmentState =  environment.getEnvironmentState();
         

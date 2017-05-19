@@ -47,7 +47,7 @@ public class Patrullero extends SearchBasedAgent {
     public Action selectAction() {
 
         // Create the search strategy
-        IStepCostFunction cost = new CostFunction();
+        IStepCostFunction cost = new UniformCostFunction();
         UniformCostSearch strategy = new UniformCostSearch(cost);          
 
         // Create a Search object with the strategy
