@@ -25,6 +25,7 @@ public class Mapa {
 		Calle gp63 = new Calle("General Paz", 6300, false, false);
 		Calle gp62 = new Calle("General Paz", 6200, false, false);
 		Calle gp61 = new Calle("General Paz", 6100, false, false);
+		Calle gp615 = new Calle("General Paz", 6150, false, false);
 		Calle gp60 = new Calle("General Paz", 6000, false, false);
 		Calle gp59 = new Calle("General Paz", 5900, false, false);
 		Calle gp58 = new Calle("General Paz", 5800, false, false);
@@ -52,13 +53,12 @@ public class Mapa {
 		Calle OB1 = new Calle("Obispo Boneo", 100, false, false);
 
 		Calle AB54 = new Calle("Almirante Brown", 5400, false, false);
-		Calle AB55 = new Calle("Almirante Brown", 5500, false, false);
+		
 		Calle AB56 = new Calle("Almirante Brown", 5600, false, false);
 		Calle AB57 = new Calle("Almirante Brown", 5700, false, false);
 		Calle AB58 = new Calle("Almirante Brown", 5800, false, false);
 		Calle AB59 = new Calle("Almirante Brown", 5900, false, false);
 		Calle AB60 = new Calle("Almirante Brown", 6000, false, false);
-		Calle AB61 = new Calle("Almirante Brown", 6100, false, false);
 		Calle AB62 = new Calle("Almirante Brown", 6200, false, false);
 		Calle AB63 = new Calle("Almirante Brown", 6300, false, false);
 		Calle AB64 = new Calle("Almirante Brown", 6400, false, false);
@@ -97,6 +97,7 @@ public class Mapa {
 		Calle Ta63 = new Calle("Tacuari", 6300, false, false);
 		Calle Ta64 = new Calle("Tacuari", 6400, false, false);
 		Calle Ta65 = new Calle("Tacuari", 6500, false, false);
+		Calle Ta655 = new Calle("Tacuari", 6550, false, false);
 		Calle Ta66 = new Calle("Tacuari", 6600, false, false);
 		Calle Ta67 = new Calle("Tacuari", 6700, false, false);
 		Calle Ta68 = new Calle("Tacuari", 6800, false, false);
@@ -130,7 +131,6 @@ public class Mapa {
 		Calle AG68 = new Calle("A Godoy", 6800, false, false);
 
 		Calle Cu60 = new Calle("Cullen", 6000, false, false);
-		Calle Cu61 = new Calle("Cullen", 6100, false, false);
 		Calle Cu62 = new Calle("Cullen", 6200, false, false);
 		Calle Cu63 = new Calle("Cullen", 6300, false, false);
 		Calle Cu64 = new Calle("Cullen", 6400, false, false);
@@ -181,6 +181,7 @@ public class Mapa {
 		Calle Do58 = new Calle("Dorrego", 5800, false, false);
 		Calle Do59 = new Calle("Dorrego", 5900, false, false);
 		Calle Do60 = new Calle("Dorrego", 6000, false, false);
+		Calle Do605 = new Calle("Dorrego", 6050, false, false);
 		Calle Do61 = new Calle("Dorrego", 6100, false, false);
 		Calle Do62 = new Calle("Dorrego", 6200, false, false);
 		Calle Do63 = new Calle("Dorrego", 6300, false, false);
@@ -240,7 +241,6 @@ public class Mapa {
 		Calle JPL7 = new Calle("JP Lopez", 700, false, false);
 		Calle JPL8 = new Calle("JP Lopez", 800, false, false);
 		Calle JPL9 = new Calle("JP Lopez", 900, false, false);
-		Calle JPL10 = new Calle("JP Lopez", 1000, false, false);
 
 		Calle AC3 = new Calle("Angel Cassanello", 300, false, false);
 		Calle AC4 = new Calle("Angel Cassanello", 400, false, false);
@@ -257,7 +257,6 @@ public class Mapa {
 		Calle RA7 = new Calle("Ricardo Aldao", 700, false, false);
 		Calle RA8 = new Calle("Ricardo Aldao", 800, false, false);
 		Calle RA9 = new Calle("Ricardo Aldao", 900, false, false);
-		Calle RA10 = new Calle("Ricardo Aldao", 1000, false, false);
 		Calle RA11 = new Calle("Ricardo Aldao", 1100, false, false);
 		
 
@@ -293,6 +292,7 @@ public class Mapa {
 		Calle DH10 = new Calle("D Huergo", 1000, false, false);
 		Calle DH11 = new Calle("D Huergo", 1100, false, false);
 		Calle DH12 = new Calle("D Huergo", 1200, false, false);
+		Calle DH125 = new Calle("D Huergo", 1250, false, false);
 		Calle DH13 = new Calle("D Huergo", 1300, false, false);
 		
 		Calle RG8 = new Calle("Ruperto Godoy", 800, false, false);
@@ -308,6 +308,7 @@ public class Mapa {
 		Calle SD11 = new Calle("Santiago Derqui", 1100, false, false);
 		Calle SD12 = new Calle("Santiago Derqui", 1200, false, false);
 		Calle SD13 = new Calle("Santiago Derqui", 1300, false, false);
+		Calle SD14 = new Calle("Santiago Derqui", 1400, false, false);
 		
 		Calle JMZ9 = new Calle("Jose Maria Zuviria", 900, false, false);
 		Calle JMZ10 = new Calle("Jose Maria Zuviria", 1000, false, false);
@@ -321,7 +322,9 @@ public class Mapa {
 		Calle La9 = new Calle("Lavaisse", 900, false, false);
 		Calle La10 = new Calle("Lavaisse", 1000, false, false);
 		Calle La11 = new Calle("Lavaisse", 1100, false, false);
+		Calle La115 = new Calle("Lavaisse", 1150, false, false);
 		Calle La12 = new Calle("Lavaisse", 1200, false, false);
+		Calle La125 = new Calle("Lavaisse", 1250, false, false);
 		
 		Calle Ll6 = new Calle("Llerena", 600, false, false);
 		Calle Ll7 = new Calle("Llerena", 700, false, false);
@@ -330,6 +333,7 @@ public class Mapa {
 		Calle Ll10 = new Calle("Llerena", 1000, false, false);
 		Calle Ll11 = new Calle("Llerena", 1100, false, false);
 		Calle Ll12 = new Calle("Llerena", 1200, false, false);
+		Calle Ll13 = new Calle("Llerena", 1300, false, false);
 		
 		Calle Pu8 = new Calle("Pujato", 800, false, false);
 		Calle Pu6 = new Calle("Pujato", 600, false, false);
@@ -337,38 +341,208 @@ public class Mapa {
 		
 		
 		//Los pasajes que fueron agregados manualmente.
-		Esquina e500 = new Esquina(MS7.getNombre(), Pi595.getNombre());
-		Esquina e501 = new Esquina(MS8.getNombre(), AG595.getNombre());
+		Esquina e501 = new Esquina(MS7.getNombre(), Pi595.getNombre());
+		Esquina e500 = new Esquina(MS8.getNombre(), AG595.getNombre());
 		Esquina e502 = new Esquina(MS9.getNombre(), Ta595.getNombre());
 		Esquina e503 = new Esquina(MS9.getNombre(), VS595.getNombre());
+		
 		Esquina e504 = new Esquina(PI8.getNombre(), Pi615.getNombre());
 		Esquina e505 = new Esquina(PI8.getNombre(), AG615.getNombre());
 		Esquina e506 = new Esquina(PI8.getNombre(), Ta615.getNombre());
+		
 		Esquina e507 = new Esquina(PP55.getNombre(), Ec655.getNombre());
 		Esquina e508 = new Esquina(PP55.getNombre(), Cu65.getNombre());
 		Esquina e509 = new Esquina(PP55.getNombre(), AG65.getNombre());
 		Esquina e510 = new Esquina(PP55.getNombre(), Pi65.getNombre());
 		Esquina e511 = new Esquina(PP55.getNombre(), Ta65.getNombre());
+		
 		Esquina e512 = new Esquina(PA58.getNombre(), La12.getNombre());
 		Esquina e513 = new Esquina(PA58.getNombre(), Ll12.getNombre());
 		Esquina e514 = new Esquina(PA58.getNombre(), DH12.getNombre());
+		
 		Esquina e515 = new Esquina(Mo11.getNombre(), gp68.getNombre());
 		Esquina e516 = new Esquina(Mo11.getNombre(), Go12.getNombre());
 		Esquina e517 = new Esquina(Mo11.getNombre(), Do62.getNombre());
 		
-		Esquina e517 = new Esquina(Go11.getNombre(), gp68.getNombre());
+		Esquina e520 = new Esquina(Go11.getNombre(), gp68.getNombre());
 		Esquina e518 = new Esquina(Go11.getNombre(), Av60.getNombre());
 		Esquina e519 = new Esquina(Go11.getNombre(), La11.getNombre());
-		Esquina e520 = new Esquina(Go11.getNombre(), Do62.getNombre());
-		Esquina e521 = new Esquina(Go11.getNombre(), Mo11.getNombre());
-		Esquina e522 = new Esquina(Go11.getNombre(), CP61.getNombre());
+		Esquina e521 = new Esquina(Go11.getNombre(), Pi60.getNombre());
+		Esquina e522 = new Esquina(Go11.getNombre(), Ta61.getNombre());
+		Esquina e523 = new Esquina(Go11.getNombre(), VS61.getNombre());
+		Esquina e525 = new Esquina(Go11.getNombre(), AG60.getNombre());
+		Esquina e526 = new Esquina(Go11.getNombre(), CP61.getNombre());
 		
-		Esquina e523 = new Esquina(CP61.getNombre(), PV8.getNombre());
-
+		Esquina e524 = new Esquina(CP61.getNombre(), PV8.getNombre());
+		
 		g.addVertex(e1);
 		g.addVertex(e2);
 		g.addVertex(e3);
+		g.addVertex(e4);
+		g.addVertex(e5);
+		g.addVertex(e6);
+		g.addVertex(e7);
+		g.addVertex(e8);
+		g.addVertex(e9);
+		g.addVertex(e10);
+		g.addVertex(e11);
+		g.addVertex(e12);
+		g.addVertex(e13);
+		g.addVertex(e14);
+		g.addVertex(e15);
+		g.addVertex(e16);
+		g.addVertex(e17);
+		g.addVertex(e18);
+		g.addVertex(e19);
+		g.addVertex(e20);
+		g.addVertex(e21);
+		g.addVertex(e22);
+		g.addVertex(e23);
+		g.addVertex(e24);
+		g.addVertex(e25);
+		g.addVertex(e26);
+		g.addVertex(e27);
+		g.addVertex(e28);
+		g.addVertex(e29);
+		g.addVertex(e30);
+		g.addVertex(e31);
+		g.addVertex(e32);
+		g.addVertex(e33);
+		g.addVertex(e34);
+		g.addVertex(e35);
+		g.addVertex(e36);
+		g.addVertex(e37);
+		g.addVertex(e38);
+		g.addVertex(e39);
+		g.addVertex(e40);
+		g.addVertex(e41);
+		g.addVertex(e42);
+		g.addVertex(e43);
+		g.addVertex(e44);
+		g.addVertex(e45);
+		g.addVertex(e46);
+		g.addVertex(e47);
+		g.addVertex(e48);
+		g.addVertex(e49);
+		g.addVertex(e50);
+		g.addVertex(e51);
+		g.addVertex(e52);
+		g.addVertex(e53);
+		g.addVertex(e54);
+		g.addVertex(e55);
+		g.addVertex(e56);
+		g.addVertex(e57);
+		g.addVertex(e58);
+		g.addVertex(e59);
+		g.addVertex(e60);
+		g.addVertex(e61);
+		g.addVertex(e62);
+		g.addVertex(e63);
+		g.addVertex(e64);
+		g.addVertex(e65);
+		g.addVertex(e66);
+		g.addVertex(e67);
+		g.addVertex(e68);
+		g.addVertex(e69);
+		g.addVertex(e70);
+		g.addVertex(e71);
+		g.addVertex(e72);
+		g.addVertex(e73);
+		g.addVertex(e74);
+		g.addVertex(e75);
+		g.addVertex(e76);
+		g.addVertex(e77);
+		g.addVertex(e78);
+		g.addVertex(e79);
+		g.addVertex(e80);
+		g.addVertex(e81);
+		g.addVertex(e82);
+		g.addVertex(e83);
+		g.addVertex(e84);
+		g.addVertex(e85);
+		g.addVertex(e86);
+		g.addVertex(e87);
+		g.addVertex(e88);
+		g.addVertex(e89);
+		g.addVertex(e90);
+		g.addVertex(e91);
+		g.addVertex(e92);
+		g.addVertex(e93);
+		g.addVertex(e94);
+		g.addVertex(e95);
+		g.addVertex(e96);
+		g.addVertex(e97);
+		g.addVertex(e98);
+		g.addVertex(e99);
+		g.addVertex(e100);
+		g.addVertex(e101);
+		g.addVertex(e102);
+		g.addVertex(e103);
+		g.addVertex(e104);
+		g.addVertex(e105);
+		g.addVertex(e106);
+		g.addVertex(e107);
+		g.addVertex(e108);
+		g.addVertex(e109);
+		g.addVertex(e110);
+		g.addVertex(e111);
+		g.addVertex(e112);
+		g.addVertex(e113);
+		g.addVertex(e114);
+		g.addVertex(e115);
+		g.addVertex(e116);
+		g.addVertex(e117);
+		g.addVertex(e118);
+		g.addVertex(e119);
+		g.addVertex(e120);
+		g.addVertex(e121);
+		g.addVertex(e122);
+		g.addVertex(e123);
+		g.addVertex(e124);
+		g.addVertex(e125);
+		g.addVertex(e126);
+		g.addVertex(e127);
+		g.addVertex(e128);
+		g.addVertex(e129);
+		g.addVertex(e130);
+		g.addVertex(e131);
+		g.addVertex(e132);
+		g.addVertex(e133);
+		g.addVertex(e134);
+		g.addVertex(e135);
+		g.addVertex(e136);
+		g.addVertex(e137);
+		g.addVertex(e138);
+		//Pasajes
+		g.addVertex(e500);
+		g.addVertex(e501);
+		g.addVertex(e502);
+		g.addVertex(e503);
+		g.addVertex(e504);
+		g.addVertex(e505);
+		g.addVertex(e506);
+		g.addVertex(e507);
+		g.addVertex(e508);
+		g.addVertex(e509);
+		g.addVertex(e510);
+		g.addVertex(e511);
+		g.addVertex(e512);
+		g.addVertex(e513);
+		g.addVertex(e514);
+		g.addVertex(e515);
+		g.addVertex(e516);
+		g.addVertex(e517);
+		g.addVertex(e518);
+		g.addVertex(e519);
+		g.addVertex(e520);
+		g.addVertex(e521);
+		g.addVertex(e522);
+		g.addVertex(e523);
+		g.addVertex(e524);
+		g.addVertex(e525);
+		g.addVertex(e526);
 
+		
 		g.addEdge(c1, e1, e2);
 		g.addEdge(c2, e2, e3);
 		g.addEdge(c3, e3, e1);
