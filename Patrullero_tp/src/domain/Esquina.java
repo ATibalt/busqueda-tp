@@ -10,11 +10,23 @@ import java.util.List;
 public class Esquina {
 	
 	List<String> calles;
-	
+
+	public Esquina (String calle1){
+		calles = new ArrayList<String>();
+		calles.add(calle1);
+	}
+
 	public Esquina (String calle1, String calle2){
 		calles = new ArrayList<String>();
 		calles.add(calle1);
 		calles.add(calle2);
+	}
+
+	public Esquina (String calle1, String calle2, String calle3){
+		calles = new ArrayList<String>();
+		calles.add(calle1);
+		calles.add(calle2);
+		calles.add(calle3);
 	}
 	
 	public String toString() {
