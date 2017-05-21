@@ -335,6 +335,8 @@ public class Mapa {
 		Calle Pu6 = new Calle("Pujato", 600, false, false);
 		Calle Pu5 = new Calle("Pujato", 500, false, false);
 		
+		
+		//Los pasajes que fueron agregados manualmente.
 		Esquina e500 = new Esquina(MS7.getNombre(), Pi595.getNombre());
 		Esquina e501 = new Esquina(MS8.getNombre(), AG595.getNombre());
 		Esquina e502 = new Esquina(MS9.getNombre(), Ta595.getNombre());
@@ -350,8 +352,18 @@ public class Mapa {
 		Esquina e512 = new Esquina(PA58.getNombre(), La12.getNombre());
 		Esquina e513 = new Esquina(PA58.getNombre(), Ll12.getNombre());
 		Esquina e514 = new Esquina(PA58.getNombre(), DH12.getNombre());
+		Esquina e515 = new Esquina(Mo11.getNombre(), gp68.getNombre());
+		Esquina e516 = new Esquina(Mo11.getNombre(), Go12.getNombre());
+		Esquina e517 = new Esquina(Mo11.getNombre(), Do62.getNombre());
 		
+		Esquina e517 = new Esquina(Go11.getNombre(), gp68.getNombre());
+		Esquina e518 = new Esquina(Go11.getNombre(), Av60.getNombre());
+		Esquina e519 = new Esquina(Go11.getNombre(), La11.getNombre());
+		Esquina e520 = new Esquina(Go11.getNombre(), Do62.getNombre());
+		Esquina e521 = new Esquina(Go11.getNombre(), Mo11.getNombre());
+		Esquina e522 = new Esquina(Go11.getNombre(), CP61.getNombre());
 		
+		Esquina e523 = new Esquina(CP61.getNombre(), PV8.getNombre());
 
 		g.addVertex(e1);
 		g.addVertex(e2);
