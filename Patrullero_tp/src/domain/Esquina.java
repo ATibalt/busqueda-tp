@@ -3,14 +3,14 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Leandro
- *
- */
 public class Esquina {
 	
 	List<String> calles;
 
+	public Esquina(){
+		
+	}
+	
 	public Esquina (String calle1){
 		calles = new ArrayList<String>();
 		calles.add(calle1);
@@ -39,7 +39,9 @@ public class Esquina {
 	}
 	
 	public boolean Equals(Esquina obj){
-		if( this.nombre.equals(obj.nombre)){
+		List<String> callesAux = this.calles;
+		callesAux.removeAll(obj.calles);
+		if(callesAux == null){
 			return true;
 		}
 		return false;
@@ -47,15 +49,16 @@ public class Esquina {
 	
 	public Esquina clone(){
 		Esquina esquina = new Esquina();
-		esquina.setNombre(this.nombre);
+		esquina.setCalles(this.calles);
 		return esquina;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public List<String> getCalles() {
+		return calles;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setCalles(List<String> calles) {
+		this.calles = calles;
 	}
+	
 }

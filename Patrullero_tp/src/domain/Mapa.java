@@ -1,17 +1,71 @@
 package domain;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import edu.uci.ics.jung.graph.DirectedGraph;
 import edu.uci.ics.jung.graph.DirectedSparseMultigraph;
 
 public class Mapa {
 
-	DirectedGraph<Esquina, Calle> g;
-
+	private DirectedGraph<Esquina, Calle> g;
+	private Esquina posicionAgente;
+	private Esquina posicionAlerta;
+	private List<Calle> callesCortadas;
+	private List<Calle> callesCongestionadas;
+	
 	public Mapa() {
 		this.Crear();
+		for(Calle calle : g.getEdges()){
+			if(calle.cortada){
+				this.callesCortadas.add(calle);
+			}
+			if(calle.congestionada){
+				this.callesCongestionadas.add(calle);
+			}
+		}
+	}
+
+	public Esquina getPosicionAgente() {
+		return posicionAgente;
+	}
+
+	public void setPosicionAgente(Esquina posicionAgente) {
+		this.posicionAgente = posicionAgente;
+	}
+
+	public Esquina getPosicionAlerta() {
+		return posicionAlerta;
+	}
+
+	public void setPosicionAlerta(Esquina posicionAlerta) {
+		this.posicionAlerta = posicionAlerta;
+	}
+
+	public List<Calle> getCallesCortadas() {
+		return callesCortadas;
+	}
+
+	public void setCallesCortadas(List<Calle> callesCortadas) {
+		this.callesCortadas = callesCortadas;
+	}
+
+	public List<Calle> getCallesCongestionadas() {
+		return callesCongestionadas;
+	}
+
+	public void setCallesCongestionadas(List<Calle> callesCongestionadas) {
+		this.callesCongestionadas = callesCongestionadas;
+	}
+
+	public DirectedGraph<Esquina, Calle> getGrafo() {
+		return g;
+	}
+
+	public void setGrafo(DirectedGraph<Esquina, Calle> g) {
+		this.g = g;
+	}
+	
+	public List<Esquina> getAdyacentes(Esquina esquina) {
+		return (List<Esquina>) g.getSuccessors(esquina);
 	}
 
 	public void Crear() {
@@ -1014,33 +1068,10 @@ public class Mapa {
 		g.addEdge(Gu54, e125, e133);
 		g.addEdge(La55, e124, e114);
 		g.addEdge(La54, e132, e124);
-	}
-
-	public List<Calle> getCallesCortadas() {
-		List<Calle> callesCortadas = new ArrayList<Calle>();
-
-		return callesCortadas;
-	}
-
-	public List<Calle> getCallesCongestionadas() {
-		List<Calle> callesCongestionadas = new ArrayList<Calle>();
-
-		return callesCongestionadas;
-	}
-
-	public Esquina getAlerta() {
-		Esquina alerta = null;
-
-		return alerta;
-	}
-
-	public Esquina getPosicionAgente() {
-		Esquina posAgente = null;
-
-		return posAgente;
-	}
-
-	public List<Esquina> getAdyacentes(Esquina esquina) {
-		return (List<Esquina>) g.getSuccessors(esquina);
+		
+		//set posicion de la alerta
+		this.setPosicionAgente(e1);
+		//set posicion del agente
+		this.setPosicionAlerta(e10);
 	}
 }
