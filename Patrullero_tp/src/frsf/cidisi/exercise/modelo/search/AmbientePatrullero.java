@@ -25,7 +25,7 @@ public class AmbientePatrullero extends Environment {
         // Create a new perception to return
          PatrulleroPerception perception = new PatrulleroPerception();
 		
-		//TODO : Set the perceptions sensors
+		//Set the perceptions sensors
          perception.setMapa(this.getEnvironmentState().getMapa());
          perception.setPosicionAlerta(this.getEnvironmentState().getposicionAlerta());
 

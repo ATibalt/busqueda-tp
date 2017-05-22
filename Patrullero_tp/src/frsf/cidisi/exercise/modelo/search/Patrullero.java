@@ -10,7 +10,6 @@ import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.solver.search.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -30,9 +29,9 @@ public class Patrullero extends SearchBasedAgent {
         // Create the operators
         Vector<SearchAction> operators = new Vector<SearchAction>();
         //iteración de la lista de las esquinas del mapa y creación de IrAnodoX(Esquina esquina) con cada una de las esquinas
-        List<Esquina> nodos = new ArrayList<Esquina>();//TODO: agState.getMapa().getEsquinas();
-        for(Esquina nodo : nodos){
-        	operators.addElement(new IrAnodoX(nodo));
+        List<Esquina> esquinas = (List<Esquina>) agState.getMapa().getGrafo().getVertices();
+        for(Esquina esquina : esquinas){
+        	operators.addElement(new IrAnodoX(esquina));
         }
         	
         // Create the Problem which the agent will resolve

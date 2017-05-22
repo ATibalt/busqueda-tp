@@ -28,7 +28,7 @@ public class EstadoAmbiente extends EnvironmentState {
     public void initState() {
 		callesCortadas = mapa.getCallesCortadas();
 		callesCongestionadas = mapa.getCallesCongestionadas();
-		posicionAlerta = mapa.getAlerta();
+		posicionAlerta = mapa.getPosicionAlerta();
 		posicionAgente = mapa.getPosicionAgente();
     }
 	/**
@@ -36,15 +36,12 @@ public class EstadoAmbiente extends EnvironmentState {
      */
     @Override
     public String toString() {
-        String str = "";
+        String str = "Estado ambiente:";
 
-        //TODO: Complete Method
-
+        str += "\nPosicion de la alerta: "+this.posicionAlerta.toString();
+        str += "\nPosicion del agente: "+this.posicionAgente.toString();
         return str;
     }
-
-	//TODO: Complete this section with agent-specific methods
-    // The following methods are agent-specific:
 
 	public Mapa getMapa() {
 		return mapa;

@@ -31,7 +31,7 @@ public class EstadoPatrullero extends SearchBasedAgentState {
     public void initState() {
     	mapa = new Mapa();
     	posicionAgente = mapa.getPosicionAgente();
-    	posicionAlerta = mapa.getAlerta();
+    	posicionAlerta = mapa.getPosicionAlerta();
     	callesCortadas = mapa.getCallesCortadas();
     	callesCongestionadas = mapa.getCallesCongestionadas();
     }
@@ -42,14 +42,13 @@ public class EstadoPatrullero extends SearchBasedAgentState {
      */
     @Override
     public SearchBasedAgentState clone() {
-		
+		//Con el new EstadoPatrullero() que invoca al initState se estaría realizando el clone...
 		EstadoPatrullero estadoClone = new EstadoPatrullero();
-		estadoClone.setposicionAgente(posicionAgente.clone());
+		/*estadoClone.setposicionAgente(posicionAgente.clone());
 		estadoClone.setposicionAlerta(posicionAlerta.clone());
-		//TODO: hacer clone
-		//estadoClone.setMapa(mapa);
-		//estadoClone.setCallesCortadas(mapa.getCallesCortadas());
-		//estadoClone.setCallesCongestionadas(mapa.getCallesCongestionadas());
+		estadoClone.setMapa(mapa);
+		estadoClone.setCallesCortadas(mapa.getCallesCortadas());
+		estadoClone.setCallesCongestionadas(mapa.getCallesCongestionadas());*/
         return estadoClone;
     }
 
@@ -72,10 +71,10 @@ public class EstadoPatrullero extends SearchBasedAgentState {
      */
     @Override
     public String toString() {
-        String str = "";
+    	String str = "Estado Agente:";
 
-        //TODO: Complete Method
-
+        str += "\nPosicion de la alerta: "+this.posicionAlerta.toString();
+        str += "\nPosicion del agente: "+this.posicionAgente.toString();
         return str;
     }
 
