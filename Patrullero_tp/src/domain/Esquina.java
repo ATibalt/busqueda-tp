@@ -49,7 +49,12 @@ public class Esquina {
 	
 	public Esquina clone(){
 		Esquina esquina = new Esquina();
-		esquina.setCalles(this.calles);
+		
+		List<String> callesClone = new ArrayList<String>();
+		callesClone.addAll(this.calles);
+		
+		esquina.setCalles(callesClone);
+		
 		return esquina;
 	}
 
