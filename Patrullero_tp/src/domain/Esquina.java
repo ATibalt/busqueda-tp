@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Esquina {
@@ -37,14 +38,30 @@ public class Esquina {
 		}
 		return "Esq."+nombre;
 	}
-	
-	public boolean Equals(Esquina obj){
-		List<String> callesAux = this.calles;
-		callesAux.removeAll(obj.calles);
-		if(callesAux == null){
+
+	@Override
+	public boolean equals(Object obj){
+		if (!(obj instanceof Esquina)) {
+			return false;
+		}
+		Esquina esq = (Esquina) obj;
+		if (this.calles == null && esq.calles == null) {
 			return true;
 		}
-		return false;
+		if ((this.calles == null && esq.calles != null)
+				|| this.calles != null && esq.calles == null
+				|| this.calles.size() != esq.calles.size()) {
+			return false;
+		}
+
+
+
+		List<String> thisCalles = new ArrayList<>(this.calles);
+		List<String> esqCalles = new ArrayList<>(esq.calles);
+
+		Collections.sort(thisCalles);
+		Collections.sort(esqCalles);
+		return thisCalles.equals(esqCalles);
 	}
 	
 	public Esquina clone(){
