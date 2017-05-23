@@ -10,26 +10,30 @@ import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.solver.search.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
 import domain.Esquina;
+import domain.Mapa;
 
 public class Patrullero extends SearchBasedAgent {
 
-    public Patrullero() {
+    public Patrullero(Mapa mapa) {
 
         // The Agent Goal
         ObjetivoPatrullero agGoal = new ObjetivoPatrullero();
 
         // The Agent State
-        EstadoPatrullero agState = new EstadoPatrullero();
+        EstadoPatrullero agState = new EstadoPatrullero(mapa);
         this.setAgentState(agState);
 
         // Create the operators
         Vector<SearchAction> operators = new Vector<SearchAction>();
+        
         //iteración de la lista de las esquinas del mapa y creación de IrAnodoX(Esquina esquina) con cada una de las esquinas
-        List<Esquina> esquinas = (List<Esquina>) agState.getMapa().getGrafo().getVertices();
+        List<Esquina> esquinas = new ArrayList<Esquina>(mapa.getGrafo().getVertices());
         for(Esquina esquina : esquinas){
         	operators.addElement(new IrAnodoX(esquina));
         }
@@ -62,8 +66,7 @@ public class Patrullero extends SearchBasedAgent {
         // Ask the solver for the best action
         Action selectedAction = null;
         try {
-            selectedAction =
-                    this.getSolver().solve(new Object[]{this.getProblem()});
+            selectedAction = this.getSolver().solve(new Object[]{this.getProblem()});
         } catch (Exception ex) {
             Logger.getLogger(Patrullero.class.getName()).log(Level.SEVERE, null, ex);
         }

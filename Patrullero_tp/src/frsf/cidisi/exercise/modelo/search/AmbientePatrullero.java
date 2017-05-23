@@ -1,13 +1,14 @@
 package frsf.cidisi.exercise.modelo.search;
 
+import domain.Mapa;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.environment.Environment;
 
 public class AmbientePatrullero extends Environment {
 
-    public AmbientePatrullero() {
+    public AmbientePatrullero(Mapa mapa) {
         // Create the environment state
-        this.environmentState = new EstadoAmbiente();
+        this.environmentState = new EstadoAmbiente(mapa);
     }
 
     public EstadoAmbiente getEnvironmentState() {
@@ -26,8 +27,9 @@ public class AmbientePatrullero extends Environment {
          PatrulleroPerception perception = new PatrulleroPerception();
 		
 		//Set the perceptions sensors
-         perception.setMapa(this.getEnvironmentState().getMapa());
          perception.setPosicionAlerta(this.getEnvironmentState().getposicionAlerta());
+         perception.setCallesCortadas(this.getEnvironmentState().getcallesCortadas());
+         perception.setCallesCongestionadas(this.getEnvironmentState().getcallesCongestionadas());
 
         return perception;
     }

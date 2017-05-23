@@ -1,4 +1,5 @@
 package frsf.cidisi.exercise.modelo.search;
+import java.util.ArrayList;
 import java.util.List;
 import domain.Calle;
 import domain.Esquina;
@@ -11,13 +12,18 @@ import frsf.cidisi.faia.state.EnvironmentState;
 public class EstadoAmbiente extends EnvironmentState {	
 	
 	private Mapa mapa;
+	
 	private List<Calle> callesCortadas;
     private List<Calle> callesCongestionadas;
     private Esquina posicionAlerta;
     private Esquina posicionAgente;
 	
-    public EstadoAmbiente() {
-    	mapa = new Mapa();
+    public EstadoAmbiente(Mapa mapa) {
+    	this.mapa = mapa;
+    	callesCortadas = new ArrayList<Calle>();
+        callesCongestionadas  = new ArrayList<Calle>();
+        posicionAlerta = new Esquina();
+        posicionAgente = new Esquina();
         this.initState();
     }
 
@@ -36,20 +42,11 @@ public class EstadoAmbiente extends EnvironmentState {
      */
     @Override
     public String toString() {
-        String str = "Estado ambiente:";
-
-        str += "\nPosicion de la alerta: "+this.posicionAlerta.toString();
-        str += "\nPosicion del agente: "+this.posicionAgente.toString();
+        String str = "";
+        str += "\n			Posicion de la alerta: "+this.posicionAlerta.toString();
+        str += "\n			Posicion del agente: "+this.posicionAgente.toString();
         return str;
     }
-
-	public Mapa getMapa() {
-		return mapa;
-	}
-	
-	public void setMapa(Mapa mapa) {
-		this.mapa = mapa;
-	}
 	
 	public List<Calle> getcallesCortadas(){
 	   return callesCortadas;

@@ -11,7 +11,7 @@ public class ObjetivoPatrullero extends GoalTest {
     public boolean isGoalState (AgentState agentState) {
     	EstadoPatrullero estadoPatrullero = (EstadoPatrullero) agentState;
     	
-        if  (estadoPatrullero.getposicionAgente().Equals(estadoPatrullero.getposicionAlerta())) //( posicionAgente == posicionAlerta)
+        if  (estadoPatrullero.getposicionAgente().equals(estadoPatrullero.getposicionAlerta())) //( posicionAgente == posicionAlerta)
         	{
             return true;
         	}

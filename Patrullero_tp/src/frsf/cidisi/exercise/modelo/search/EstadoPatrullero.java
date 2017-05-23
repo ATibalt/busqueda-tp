@@ -1,4 +1,5 @@
 package frsf.cidisi.exercise.modelo.search;
+import java.util.ArrayList;
 import java.util.List;
 import domain.Calle;
 import domain.Esquina;
@@ -12,6 +13,7 @@ import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 public class EstadoPatrullero extends SearchBasedAgentState {
 	
 	private Mapa mapa;
+	
     private Esquina posicionAgente;
     private Esquina posicionAlerta;
 	private List<Calle> callesCortadas;
@@ -20,7 +22,13 @@ public class EstadoPatrullero extends SearchBasedAgentState {
 	
 	//TODO: costo como atributo? Ver ejemplo snake, incrementan el costo en el primer execute de una action
 	
-    public EstadoPatrullero() {
+    public EstadoPatrullero(Mapa mapa) {
+    	this.mapa = mapa;
+    	posicionAgente = new Esquina();
+    	posicionAlerta = new Esquina();
+    	callesCortadas = new ArrayList<Calle>();
+    	callesCongestionadas = new ArrayList<Calle>();
+    	costo = 0.0;
         this.initState();
     }
 
@@ -29,11 +37,11 @@ public class EstadoPatrullero extends SearchBasedAgentState {
      */
     @Override
     public void initState() {
-    	mapa = new Mapa();
-    	posicionAgente = mapa.getPosicionAgente();
-    	posicionAlerta = mapa.getPosicionAlerta();
-    	callesCortadas = mapa.getCallesCortadas();
-    	callesCongestionadas = mapa.getCallesCongestionadas();
+    	posicionAgente = this.mapa.getPosicionAgente();
+    	posicionAlerta = this.mapa.getPosicionAlerta();
+    	callesCortadas = this.mapa.getCallesCortadas();
+    	callesCongestionadas = this.mapa.getCallesCongestionadas();
+    	costo = 0.0;
     }
     
     /**
@@ -42,13 +50,43 @@ public class EstadoPatrullero extends SearchBasedAgentState {
      */
     @Override
     public SearchBasedAgentState clone() {
-		//Con el new EstadoPatrullero() que invoca al initState se estaría realizando el clone...
-		EstadoPatrullero estadoClone = new EstadoPatrullero();
-		/*estadoClone.setposicionAgente(posicionAgente.clone());
-		estadoClone.setposicionAlerta(posicionAlerta.clone());
-		estadoClone.setMapa(mapa);
-		estadoClone.setCallesCortadas(mapa.getCallesCortadas());
-		estadoClone.setCallesCongestionadas(mapa.getCallesCongestionadas());*/
+    	/*EstadoPatrullero estadoClone = new EstadoPatrullero();
+    	return estadoClone;
+    	
+    	Esquina posAgenteAux = posicionAgente.clone();
+    	Esquina posAlertaAux = posicionAlerta.clone();*/
+    	
+		EstadoPatrullero estadoClone = new EstadoPatrullero(this.mapa);
+		
+		/*Mapa mapaClone = new Mapa();
+		
+		mapaClone.setPosicionAgente(posAlertaAux);
+		mapaClone.setPosicionAlerta(posAlertaAux);
+		
+		estadoClone.setposicionAgente(mapaClone.getPosicionAgente());
+		estadoClone.setposicionAlerta(mapaClone.getPosicionAlerta());
+		estadoClone.setMapa(mapaClone);
+		estadoClone.setCallesCortadas(mapaClone.getCallesCortadas());
+		estadoClone.setCallesCongestionadas(mapaClone.getCallesCongestionadas());*/
+		
+		estadoClone.setposicionAgente(this.posicionAgente.clone());
+		estadoClone.setposicionAlerta(this.posicionAlerta.clone());
+		
+		List<Calle> callesCortadasAux = new ArrayList<Calle>();
+		if(callesCortadas != null){
+			for(Calle calle : this.callesCortadas){
+			callesCortadasAux.add(calle.clone());
+			}
+		}
+		
+		List<Calle> callesCongestionadasAux = new ArrayList<Calle>();
+		if(callesCongestionadas != null){
+			for(Calle calle : this.callesCongestionadas){
+			callesCongestionadasAux.add(calle.clone());
+			}
+		}
+		
+		
         return estadoClone;
     }
 
@@ -60,10 +98,10 @@ public class EstadoPatrullero extends SearchBasedAgentState {
     public void updateState(Perception p) {
         //TODO: Complete Method
     	PatrulleroPerception perception = (PatrulleroPerception) p;
-    	this.setMapa(perception.getMapa());
+    	
     	this.setposicionAlerta(perception.getPosicionAlerta());
-    	this.setCallesCortadas(this.mapa.getCallesCortadas());
-    	this.setCallesCongestionadas(this.mapa.getCallesCongestionadas());
+    	this.setCallesCortadas(perception.getCallesCortadas());
+    	this.setCallesCongestionadas(perception.getCallesCongestionadas());
     }
 
     /**
@@ -71,10 +109,10 @@ public class EstadoPatrullero extends SearchBasedAgentState {
      */
     @Override
     public String toString() {
-    	String str = "Estado Agente:";
+    	String str = "";
 
-        str += "\nPosicion de la alerta: "+this.posicionAlerta.toString();
-        str += "\nPosicion del agente: "+this.posicionAgente.toString();
+        str += "\n			Posicion de la alerta: "+this.posicionAlerta.toString();
+        str += "\n			Posicion del agente: "+this.posicionAgente.toString();
         return str;
     }
 

@@ -1,6 +1,6 @@
 package frsf.cidisi.exercise.modelo.search.actions;
-import java.util.List;
 
+import java.util.List;
 import domain.Calle;
 import domain.Esquina;
 import frsf.cidisi.exercise.modelo.search.*;
@@ -35,9 +35,13 @@ public class IrAnodoX extends SearchAction {
         
         if(esquinasAdyacentes.contains(nodoX))//Ver si anda bien el contains!
         {	//calle entre la esquina actual del agente y la esquina a la que irá
-        	Calle calleEntreEsquinas = null; //TODO: agentState.getCalle(posicionAgente, nodoX);
+        	Calle calleEntreEsquinas = agentState.getMapa().getCalleEntreEsquinas(posicionAgente, nodoX);
         	
-        	if(!callesCortadas.contains(calleEntreEsquinas)){
+        	if(callesCortadas.contains(calleEntreEsquinas)){
+        		
+        		return null;
+        		
+        	}else{
         		//si la calle no está cortada, entonces el agente pasa a estar en la esquina X
         		agentState.setposicionAgente(nodoX);
         		
@@ -66,16 +70,17 @@ public class IrAnodoX extends SearchAction {
         
         if(esquinasAdyacentes.contains(nodoX)) {
         	
-        	Calle calleEntreEsquinas = null; //TODO: agentState.getCalle(posicionAgente, nodoX);
+        	Calle calleEntreEsquinas = agentState.getMapa().getCalleEntreEsquinas(posicionAgente, nodoX);
         	
         	if(!callesCortadas.contains(calleEntreEsquinas)){
         		// Update the real world
+        		
                 environmentState.setposicionAgente(nodoX);
                 // Update the agent state
         		agentState.setposicionAgente(nodoX);
         		
         		return environmentState;
-        	}  
+        	}
         }
         return null;
     }
