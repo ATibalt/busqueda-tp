@@ -56,8 +56,8 @@ public class Esquina {
 
 
 
-		List<String> thisCalles = new ArrayList<>(this.calles);
-		List<String> esqCalles = new ArrayList<>(esq.calles);
+		List<String> thisCalles = new ArrayList<String>(this.calles);
+		List<String> esqCalles = new ArrayList<String>(esq.calles);
 
 		Collections.sort(thisCalles);
 		Collections.sort(esqCalles);
@@ -67,9 +67,7 @@ public class Esquina {
 	public Esquina clone(){
 		Esquina esquina = new Esquina();
 		
-		List<String> callesClone = new ArrayList<String>();
-		callesClone.addAll(this.calles);
-		
+		List<String> callesClone = new ArrayList<String>(this.calles);
 		esquina.setCalles(callesClone);
 		
 		return esquina;

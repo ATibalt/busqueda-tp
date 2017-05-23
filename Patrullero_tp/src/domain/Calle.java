@@ -15,12 +15,37 @@ public class Calle {
 		this.cortada = cortada;
 		this.congestionada = congestionada;
 	}
-	/*
-	public Calle(String nombre) {
-		super();
-		this.nombre = nombre;
+	
+	public Calle(){
+		
 	}
-	 */
+	
+	public Calle clone(){
+		Calle calleClone = new Calle();
+		calleClone.setNombre(this.getNombre());
+		calleClone.setAltura(this.getAltura());
+		calleClone.setCortada(this.isCortada());
+		calleClone.setCongestionada(this.isCongestionada());
+		return calleClone;
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		if (!(obj instanceof Calle)) {
+			return false;
+		}
+		Calle calle = (Calle) obj;
+	
+		if(this.nombre.equals(calle.nombre)
+				&& this.altura == calle.altura
+				&& this.cortada == calle.cortada
+				&& this.congestionada == calle.congestionada){
+			return true;
+		}
+		
+		return false;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -54,6 +79,6 @@ public class Calle {
 	}
 
 	public String toString() {
-		return "Calle."+this.nombre;
+		return "Calle."+this.nombre+" "+this.altura;
 	}
 }

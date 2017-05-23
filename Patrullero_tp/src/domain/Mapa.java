@@ -1,7 +1,6 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import edu.uci.ics.jung.algorithms.shortestpath.DijkstraShortestPath;
@@ -18,6 +17,9 @@ public class Mapa {
 	
 	public Mapa() {
 		this.Crear();
+		this.callesCortadas = new ArrayList<Calle>();
+		this.callesCongestionadas = new ArrayList<Calle>();
+		
 		for(Calle calle : g.getEdges()){
 			if(calle.cortada){
 				this.callesCortadas.add(calle);
@@ -69,10 +71,16 @@ public class Mapa {
 	}
 	
 	public List<Esquina> getAdyacentes(Esquina esquina) {
-		return new ArrayList<Esquina>(g.getSuccessors(esquina));
+		List<Esquina> esquinas = new ArrayList<Esquina>(g.getVertices());
+		for(Esquina esq : esquinas){
+			if(esq.equals(esquina))
+				return new ArrayList<Esquina>(g.getSuccessors(esq));
+		}
+		return new ArrayList<Esquina>();
 	}
 
 	public Calle getCalleEntreEsquinas(Esquina esquina1, Esquina esquina2) {
+		
 		return g.findEdge(esquina1, esquina2);
 	}
 
@@ -111,7 +119,7 @@ public class Mapa {
 		Calle SC8 = new Calle("Salvador del Carril", 800, false, false);
 
 		Calle OB9 = new Calle("Obispo Boneo", 900, false, false);
-		Calle OB8 = new Calle("Obispo Boneo", 800, false, false);
+		Calle OB8 = new Calle("Obispo Boneo", 800, true, false);
 		Calle OB7 = new Calle("Obispo Boneo", 700, false, false);
 		Calle OB6 = new Calle("Obispo Boneo", 600, false, false);
 		Calle OB5 = new Calle("Obispo Boneo", 500, false, false);
