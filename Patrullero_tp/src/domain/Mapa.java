@@ -79,12 +79,43 @@ public class Mapa {
 		return new ArrayList<Esquina>();
 	}
 
-	public Calle getCalleEntreEsquinas(Esquina esquina1, Esquina esquina2) {
+	public Calle getCalleEntreEsquinas(Esquina esquina1Aux, Esquina esquina2Aux) throws Exception {
 		
-		return g.findEdge(esquina1, esquina2);
+		Esquina esquina1 = new Esquina();
+		Esquina esquina2 = new Esquina();
+		
+		List<Esquina> esquinas = new ArrayList<Esquina>(g.getVertices());
+		for(Esquina esq : esquinas){
+			if(esq.equals(esquina1Aux)){
+				esquina1 = esq;
+			}
+			if	(esq.equals(esquina2Aux)){
+				esquina2 = esq;
+			}
+		}
+		
+		Calle calleEntreEsquinas = g.findEdge(esquina1, esquina2);
+		
+		if(calleEntreEsquinas == null)
+			throw new Exception("No existe calle entre las esquinas "+esquina1Aux+" y "+esquina2Aux);
+		
+		return calleEntreEsquinas;
 	}
 
-	public int getCostoMinimo(Esquina esquina1, Esquina esquina2) {
+	public int getCostoMinimo(Esquina esquina1Aux, Esquina esquina2Aux) {
+		Esquina esquina1 = new Esquina();
+		Esquina esquina2 = new Esquina();
+		
+		List<Esquina> esquinas = new ArrayList<Esquina>(g.getVertices());
+		for(Esquina esq : esquinas){
+			if(esq.equals(esquina1Aux)){
+				esquina1 = esq;
+			}
+			if	(esq.equals(esquina2Aux)){
+				esquina2 = esq;
+			}
+		}
+		
 		DijkstraShortestPath<Esquina, Calle> alg = new DijkstraShortestPath<Esquina, Calle>(g);
 		List<Calle> l = alg.getPath(esquina1, esquina2);
 		return l.size();
@@ -119,7 +150,7 @@ public class Mapa {
 		Calle SC8 = new Calle("Salvador del Carril", 800, false, false);
 
 		Calle OB9 = new Calle("Obispo Boneo", 900, false, false);
-		Calle OB8 = new Calle("Obispo Boneo", 800, true, false);
+		Calle OB8 = new Calle("Obispo Boneo", 800, false, false);
 		Calle OB7 = new Calle("Obispo Boneo", 700, false, false);
 		Calle OB6 = new Calle("Obispo Boneo", 600, false, false);
 		Calle OB5 = new Calle("Obispo Boneo", 500, false, false);
