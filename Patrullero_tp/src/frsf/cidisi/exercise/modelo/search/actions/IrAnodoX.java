@@ -33,9 +33,16 @@ public class IrAnodoX extends SearchAction {
         List<Calle> callesCortadas = agentState.getCallesCortadas();
         List<Calle> callesCongestionadas = agentState.getCallesCongestionadas();
         
-        if(esquinasAdyacentes.contains(nodoX))//Ver si anda bien el contains!
-        {	//calle entre la esquina actual del agente y la esquina a la que irá
-        	Calle calleEntreEsquinas = agentState.getMapa().getCalleEntreEsquinas(posicionAgente, nodoX);
+        if(esquinasAdyacentes.contains(nodoX)){	
+        	//calle entre la esquina actual del agente y la esquina a la que irá
+        	Calle calleEntreEsquinas = new Calle();
+        	
+			try {
+				calleEntreEsquinas = agentState.getMapa().getCalleEntreEsquinas(posicionAgente, nodoX);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         	
         	if(callesCortadas.contains(calleEntreEsquinas)){
         		
@@ -70,7 +77,13 @@ public class IrAnodoX extends SearchAction {
         
         if(esquinasAdyacentes.contains(nodoX)) {
         	
-        	Calle calleEntreEsquinas = agentState.getMapa().getCalleEntreEsquinas(posicionAgente, nodoX);
+        	Calle calleEntreEsquinas = new Calle();
+			try {
+				calleEntreEsquinas = agentState.getMapa().getCalleEntreEsquinas(posicionAgente, nodoX);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         	
         	if(!callesCortadas.contains(calleEntreEsquinas)){
         		// Update the real world
