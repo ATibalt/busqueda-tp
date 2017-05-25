@@ -1,0 +1,11 @@
+.menu-opciones {
+    -fx-padding: 20px 50px;
+}
+
+.calles-margin-start {
+    -fx-start-margin: 50px;
+}
+
+.calles-margin-end {
+    -fx-end-margin: 20px;
+}
