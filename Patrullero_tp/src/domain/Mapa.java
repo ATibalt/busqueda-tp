@@ -141,6 +141,10 @@ public class Mapa {
 		return null;
 	}
 
+	public List<Calle> getCalles() {
+		return (List<Calle>)g.getEdges();
+	}
+
 	public void Crear() {
 		g = new DirectedSparseMultigraph<Esquina, Calle>();
 
