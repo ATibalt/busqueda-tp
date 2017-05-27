@@ -12,6 +12,10 @@
 
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
 <HBox fx:controller="interfaz.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="/css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <GridPane styleClass="menu-opciones">
@@ -20,6 +24,7 @@
                         styleClass="btn-posicion"
                         text="Posición Agente"
                         onAction="#chooseAgent"
+                        prefWidth="110.0"
                         GridPane.rowIndex="0" />
                 <Text fx:id="posicion_agente"
                       text="placeholder muy largo de una calle larga"
@@ -29,7 +34,8 @@
                 <Button fx:id="btn_posicion_alarma"
                         styleClass="btn-posicion"
                         text="Posición Alarma"
-                        onAction="#showIds"
+                        onAction="#chooseAgent"
+                        prefWidth="110.0"
                         GridPane.rowIndex="3" />
                 <Text fx:id="posicion_alarma"
                       text="placeholder"
@@ -37,16 +43,31 @@
                       wrappingWidth="140.0" />
                 <Pane minHeight="30.0" GridPane.rowIndex="5" />
                 <Button text="Calles Congestionadas"
+                        prefWidth="150.0"
                         GridPane.rowIndex="6" />
                 <Button text="Calles Cortadas"
+                        prefWidth="150.0"
                         GridPane.rowIndex="7" />
-                <Pane minHeight="300.0"
-                      GridPane.rowIndex="8" />
-                <HBox GridPane.rowIndex="9">
+                <Pane minHeight="30.0" GridPane.rowIndex="8" />
+                <Label text="Elegir método" GridPane.rowIndex="9" />
+                <ComboBox fx:id="metodoCombo" prefWidth="150.0" promptText="Elegir" GridPane.rowIndex="10">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Anchura" />
+                            <String fx:value="Costo Uniforme" />
+                            <String fx:value="A*" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Pane minHeight="220.0"
+                      GridPane.rowIndex="11" />
+                <HBox GridPane.rowIndex="12">
                     <children>
                         <Button text="Iniciar"
+                                prefWidth="65.0"
                                 GridPane.rowIndex="9" />
                         <Button text="Ver Log"
+                                prefWidth="65.0"
                                 GridPane.rowIndex="9">
                             <HBox.margin>
                                 <Insets left="10.0" />
@@ -107,6 +128,7 @@
                         <Circle fx:id="e40" fill="DODGERBLUE" layoutX="472.0" layoutY="148.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e41" fill="DODGERBLUE" layoutX="510.0" layoutY="149.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e42" fill="DODGERBLUE" layoutX="545.0" layoutY="150.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="e43" fill="DODGERBLUE" layoutX="190.0" layoutY="181.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e44" fill="DODGERBLUE" layoutX="243.0" layoutY="181.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e45" fill="DODGERBLUE" layoutX="281.0" layoutY="183.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e46" fill="DODGERBLUE" layoutX="318.0" layoutY="183.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
@@ -226,9 +248,9 @@
                         <Circle fx:id="e502" fill="DODGERBLUE" layoutX="278.0" layoutY="389.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e501" fill="DODGERBLUE" layoutX="317.0" layoutY="388.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e500" fill="DODGERBLUE" layoutX="355.0" layoutY="389.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Circle fx:id="e505" fill="DODGERBLUE" layoutX="279.0" layoutY="321.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="e506" fill="DODGERBLUE" layoutX="279.0" layoutY="321.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e504" fill="DODGERBLUE" layoutX="317.0" layoutY="322.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Circle fx:id="e506" fill="DODGERBLUE" layoutX="355.0" layoutY="322.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="e505" fill="DODGERBLUE" layoutX="355.0" layoutY="322.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                     </children></Pane>
             </children>
         </StackPane>

@@ -7,3 +7,7 @@
     -fx-vgap: 5px;
     -fx-hgap: 5px;
 }
+
+.button {
+    -fx-alignment: center-left;
+}
