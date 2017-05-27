@@ -220,6 +220,7 @@
                         <Circle fx:id="e524" fill="DODGERBLUE" layoutX="232.0" layoutY="298.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e523" fill="DODGERBLUE" layoutX="243.0" layoutY="341.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e522" fill="DODGERBLUE" layoutX="279.0" layoutY="342.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="e520" fill="DODGERBLUE" layoutX="357.0" layoutY="342.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e521" fill="DODGERBLUE" layoutX="318.0" layoutY="342.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e503" fill="DODGERBLUE" layoutX="244.0" layoutY="387.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e502" fill="DODGERBLUE" layoutX="278.0" layoutY="389.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
@@ -227,7 +228,7 @@
                         <Circle fx:id="e500" fill="DODGERBLUE" layoutX="355.0" layoutY="389.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e505" fill="DODGERBLUE" layoutX="279.0" layoutY="321.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="e504" fill="DODGERBLUE" layoutX="317.0" layoutY="322.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Circle fx:id="e506" fill="DODGERBLUE" layoutX="355.0" layoutY="359.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="e506" fill="DODGERBLUE" layoutX="355.0" layoutY="322.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                     </children></Pane>
             </children>
         </StackPane>
