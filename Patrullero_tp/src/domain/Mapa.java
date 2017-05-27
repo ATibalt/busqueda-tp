@@ -1181,6 +1181,9 @@ public class Mapa {
 		//set posicion de la alerta
 		this.setPosicionAgente(e1);
 		//set posicion del agente
-		this.setPosicionAlerta(e10);
+		//this.setPosicionAlerta(e10);
+		
+		//Esquina A. Godoy y Pedro de Vega
+		this.setPosicionAlerta(e76);
 	}
 }
