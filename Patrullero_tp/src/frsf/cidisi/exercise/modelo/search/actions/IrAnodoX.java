@@ -91,7 +91,9 @@ public class IrAnodoX extends SearchAction {
                 environmentState.setposicionAgente(nodoX);
                 // Update the agent state
         		agentState.setposicionAgente(nodoX);
-        		
+
+        		// TODO: Actualizar interfaz
+
         		return environmentState;
         	}
         }

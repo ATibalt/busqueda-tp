@@ -111,7 +111,7 @@ public class Mapa {
 			if(esq.equals(esquina1Aux)){
 				esquina1 = esq;
 			}
-			if	(esq.equals(esquina2Aux)){
+			if(esq.equals(esquina2Aux)){
 				esquina2 = esq;
 			}
 		}
@@ -119,6 +119,26 @@ public class Mapa {
 		DijkstraShortestPath<Esquina, Calle> alg = new DijkstraShortestPath<Esquina, Calle>(g);
 		List<Calle> l = alg.getPath(esquina1, esquina2);
 		return l.size();
+	}
+
+	public Esquina getEsquinaExistente(Esquina e) {
+		List<Esquina> esquinas = new ArrayList<Esquina>(g.getVertices());
+		for(Esquina esq : esquinas){
+			if(esq.equals(e)){
+				return esq;
+			}
+		}
+		return null;
+	}
+
+	public Calle getCalleExistente(Calle c) {
+		List<Calle> calles = new ArrayList<>(g.getEdges());
+		for(Calle calle : calles) {
+			if(calle.equals(c)){
+				return calle;
+			}
+		}
+		return null;
 	}
 
 	public void Crear() {
@@ -1177,13 +1197,5 @@ public class Mapa {
 		g.addEdge(Gu54, e125, e133);
 		g.addEdge(La55, e124, e114);
 		g.addEdge(La54, e132, e124);
-
-		//set posicion de la alerta
-		this.setPosicionAgente(e1);
-		//set posicion del agente
-		//this.setPosicionAlerta(e10);
-		
-		//Esquina A. Godoy y Pedro de Vega
-		this.setPosicionAlerta(e76);
 	}
 }

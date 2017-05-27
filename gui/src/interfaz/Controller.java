@@ -1,50 +1,63 @@
 package interfaz;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Shape;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.event.ChangeEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
 
-    @FXML private Pane esquinas;
+    @FXML ComboBox metodoCombo;
 
-    public void showIds(ActionEvent actionEvent) {
-        List<Node> ids = new ArrayList<>();
-        for (Node esq : esquinas.getChildren()) {
-            Text txt = new Text();
-            txt.setText(esq.getId());
-            txt.setFont(new Font("Helvetica", 9));
-            txt.setFill(Color.BLUEVIOLET);
-            txt.setLayoutX(esq.getLayoutX());
-            txt.setLayoutY(esq.getLayoutY());
-            ids.add(txt);
-        }
-        esquinas.getChildren().addAll(ids);
-    }
-
-    public void chooseAgent(ActionEvent event) {
-        for (Node esq : esquinas.getChildren()) {
-            esq.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    System.out.printf("Clickeaste la esquina: %s %n", esq.getId());
-                    for (Node e : esquinas.getChildren()) {
-                        ((Shape)e).setFill(Color.DODGERBLUE);
-                        e.setOnMouseClicked(null);
+    @Override
+    public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+        metodoCombo.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (newValue != null) {
+                    switch (newValue) {
+                        case "Amplitud":
+                            Config.metodo = 2;
+                            break;
+                        case "Costo Uniforme":
+                            Config.metodo = 3;
+                            break;
+                        case "A*":
+                        default:
+                            Config.metodo = 4;
                     }
                 }
-            });
-            ((Shape)esq).setFill(Color.RED);
-        }
+            }
+        });
+    }
+
+    public void verLog(ActionEvent actionEvent) {
+        Config.consoleOutput.setPrefHeight(450);
+        Config.consoleOutput.setEditable(false);
+        Button cleanConsole = new Button("Limpiar");
+        cleanConsole.setOnAction((event -> Config.consoleOutput.clear()));
+        cleanConsole.setLayoutX(755);
+        cleanConsole.setLayoutY(0);
+        Config.consoleOutput.setPrefWidth(810);
+        Pane root = new Pane(Config.consoleOutput, cleanConsole);
+        Stage stage = new Stage();
+        stage.setTitle("Log");
+        stage.setScene(new Scene(root, 800, 440));
+        stage.setResizable(false);
+        stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+        stage.show();
     }
 }

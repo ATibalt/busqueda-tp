@@ -20,28 +20,36 @@
     <children>
         <GridPane styleClass="menu-opciones">
             <children>
-                <Button fx:id="btn_posicion_agente"
+                <Button fx:id="btnPosicionAgente"
                         styleClass="btn-posicion"
                         text="Posición Agente"
-                        onAction="#chooseAgent"
                         prefWidth="110.0"
                         GridPane.rowIndex="0" />
-                <Text fx:id="posicion_agente"
-                      text="placeholder muy largo de una calle larga"
-                      GridPane.rowIndex="1"
-                      wrappingWidth="140.0" />
-                <Pane minHeight="10.0" GridPane.rowIndex="2" />
-                <Button fx:id="btn_posicion_alarma"
+                <StackPane GridPane.rowIndex="1"
+                           minHeight="35.0">
+                    <children>
+                        <Text fx:id="posicionAgente"
+                              text="Seleccione una esquina del mapa"
+                              wrappingWidth="140.0" />
+                    </children>
+                </StackPane>
+                <Pane minHeight="10.0"
+                      GridPane.rowIndex="2" />
+                <Button fx:id="btnPosicionAlarma"
                         styleClass="btn-posicion"
                         text="Posición Alarma"
-                        onAction="#chooseAgent"
                         prefWidth="110.0"
                         GridPane.rowIndex="3" />
-                <Text fx:id="posicion_alarma"
-                      text="placeholder"
-                      GridPane.rowIndex="4"
-                      wrappingWidth="140.0" />
-                <Pane minHeight="30.0" GridPane.rowIndex="5" />
+                <StackPane GridPane.rowIndex="4"
+                           minHeight="35.0">
+                    <children>
+                        <Text fx:id="posicionAlarma"
+                              text="Seleccione una esquina del mapa"
+                              wrappingWidth="140.0" />
+                    </children>
+                </StackPane>
+                <Pane minHeight="30.0"
+                      GridPane.rowIndex="5" />
                 <Button text="Calles Congestionadas"
                         prefWidth="150.0"
                         GridPane.rowIndex="6" />
@@ -53,21 +61,23 @@
                 <ComboBox fx:id="metodoCombo" prefWidth="150.0" promptText="Elegir" GridPane.rowIndex="10">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Anchura" />
+                            <String fx:value="Amplitud" />
                             <String fx:value="Costo Uniforme" />
                             <String fx:value="A*" />
                         </FXCollections>
                     </items>
                 </ComboBox>
-                <Pane minHeight="220.0"
+                <Pane minHeight="200.0"
                       GridPane.rowIndex="11" />
                 <HBox GridPane.rowIndex="12">
                     <children>
                         <Button text="Iniciar"
+                                fx:id="btnIniciar"
                                 prefWidth="65.0"
                                 GridPane.rowIndex="9" />
                         <Button text="Ver Log"
                                 prefWidth="65.0"
+                                onAction="#verLog"
                                 GridPane.rowIndex="9">
                             <HBox.margin>
                                 <Insets left="10.0" />

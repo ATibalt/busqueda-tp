@@ -24,10 +24,10 @@ public class Patrullero extends SearchBasedAgent {
 	public  static final int COSTO_UNIFORME = 3;
 	public static final int A_ASTERISCO = 4;
 
-    public Patrullero(Mapa mapa) {
+    public Patrullero(Mapa mapa, int estrategia) {
     	
     	//Se selecciona la estrategia
-    	searchStrategy = 4;
+    	searchStrategy = estrategia;
 
         // The Agent Goal
         ObjetivoPatrullero agGoal = new ObjetivoPatrullero();
