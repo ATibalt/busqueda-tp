@@ -1,0 +1,5 @@
+.menu {
+    -fx-padding: 20px 50px 10px 20px;
+    -fx-vgap: 5px;
+    -fx-hgap: 5px;
+}

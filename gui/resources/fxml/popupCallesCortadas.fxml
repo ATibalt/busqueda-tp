@@ -5,13 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.PopupCallesCortadas">
+<?import javafx.scene.layout.GridPane?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/css/popupCallesCortadas.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.PopupCallesCortadas">
    <children>
-      <HBox layoutX="6.0" layoutY="6.0" prefHeight="400.0" prefWidth="600.0">
+      <GridPane styleClass="menu" layoutX="6.0" layoutY="6.0" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <ComboBox prefWidth="150.0" promptText="Calle" />
-            <ComboBox prefWidth="150.0" promptText="Altura" />
-            <Button mnemonicParsing="false" text="Aceptar" />
-         </children></HBox>
+            <ComboBox GridPane.columnIndex="0" prefWidth="150.0" promptText="Calle" />
+            <ComboBox GridPane.columnIndex="1" prefWidth="150.0" promptText="Altura" />
+            <Button GridPane.columnIndex="1" GridPane.rowIndex="2" mnemonicParsing="false" text="Aceptar" />
+         </children></GridPane>
    </children>
 </AnchorPane>
