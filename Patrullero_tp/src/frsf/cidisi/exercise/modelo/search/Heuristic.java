@@ -16,9 +16,8 @@ public class Heuristic implements IEstimatedCostFunction {
     public double getEstimatedCost(NTree node) {
         EstadoPatrullero agState = (EstadoPatrullero) node.getAgentState();
 	
-		//Method: Complete Method
-		//TODO: realizar una función heuristica que calcule el costo hasta el destino (minima cantidad de aristas para llegar al destino).
-        //ver las aristas entre la posicion actual y el destino y determinar si se puede llegar y dar el costo 
-        return 0;
+		//función heuristica será el camino mínimo al nodo destindo, es decir a la alerta, multiplicado por el costo de transitar una calle libre
+        //así se garantiza no sobrestimar el costo real
+        return agState.getMapa().getCostoMinimo(agState.getposicionAgente(), agState.getposicionAlerta()) * 1;
     }
 }

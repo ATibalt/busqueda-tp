@@ -50,25 +50,9 @@ public class EstadoPatrullero extends SearchBasedAgentState {
      */
     @Override
     public SearchBasedAgentState clone() {
-    	/*EstadoPatrullero estadoClone = new EstadoPatrullero();
-    	return estadoClone;
-    	
-    	Esquina posAgenteAux = posicionAgente.clone();
-    	Esquina posAlertaAux = posicionAlerta.clone();*/
-    	
+
 		EstadoPatrullero estadoClone = new EstadoPatrullero(this.mapa);
-		
-		/*Mapa mapaClone = new Mapa();
-		
-		mapaClone.setPosicionAgente(posAlertaAux);
-		mapaClone.setPosicionAlerta(posAlertaAux);
-		
-		estadoClone.setposicionAgente(mapaClone.getPosicionAgente());
-		estadoClone.setposicionAlerta(mapaClone.getPosicionAlerta());
-		estadoClone.setMapa(mapaClone);
-		estadoClone.setCallesCortadas(mapaClone.getCallesCortadas());
-		estadoClone.setCallesCongestionadas(mapaClone.getCallesCongestionadas());*/
-		
+			
 		estadoClone.setposicionAgente(this.posicionAgente.clone());
 		estadoClone.setposicionAlerta(this.posicionAlerta.clone());
 		
@@ -86,6 +70,7 @@ public class EstadoPatrullero extends SearchBasedAgentState {
 			}
 		}
 		
+		estadoClone.costo = this.costo;
 		
         return estadoClone;
     }

@@ -12,12 +12,12 @@ import frsf.cidisi.faia.state.EnvironmentState;
 public class IrAnodoX extends SearchAction {
 
 	private Esquina nodoX;
-	private double costo;
+	private double costoAccion;
 	
     public IrAnodoX(Esquina nodoX) {
 		super();
 		this.nodoX = nodoX;
-		this.costo = 5;
+		this.costoAccion = 1;
 	}
 	/**
      * This method updates a tree node state when the search process is running.
@@ -54,8 +54,8 @@ public class IrAnodoX extends SearchAction {
         		
         		if(callesCongestionadas.contains(calleEntreEsquinas)){
         			//si la calle no está cortada pero si congestionada, tendrá un costo ir a la esquina X
-        			this.costo = 10;
-        			agentState.incrementarCosto(this.costo);
+        			this.costoAccion = costoAccion*10;
+        			agentState.incrementarCosto(this.costoAccion);
         		}
         		return agentState;
         	}
@@ -103,7 +103,7 @@ public class IrAnodoX extends SearchAction {
      */
     @Override
     public Double getCost() {
-    	return this.costo;
+    	return this.costoAccion;
       //  return new Double(0);
     }
 

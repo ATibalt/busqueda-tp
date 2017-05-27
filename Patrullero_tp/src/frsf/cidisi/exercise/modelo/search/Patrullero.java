@@ -1,7 +1,6 @@
 package frsf.cidisi.exercise.modelo.search;
 
 import frsf.cidisi.exercise.modelo.search.actions.IrAnodoX;
-
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.Problem;
 import frsf.cidisi.faia.agent.search.SearchAction;
@@ -11,7 +10,6 @@ import frsf.cidisi.faia.solver.search.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
@@ -19,8 +17,17 @@ import domain.Esquina;
 import domain.Mapa;
 
 public class Patrullero extends SearchBasedAgent {
+	
+	private int searchStrategy;
+	public  static final int PROFUNDIDAD = 1;
+	public  static final int ANCHURA = 2;
+	public  static final int COSTO_UNIFORME = 3;
+	public static final int A_ASTERISCO = 4;
 
     public Patrullero(Mapa mapa) {
+    	
+    	//Se selecciona la estrategia
+    	searchStrategy = 4;
 
         // The Agent Goal
         ObjetivoPatrullero agGoal = new ObjetivoPatrullero();
@@ -48,10 +55,33 @@ public class Patrullero extends SearchBasedAgent {
      */
     @Override
     public Action selectAction() {
-
-        // Create the search strategy
-        IStepCostFunction cost = new UniformCostFunction();
-        UniformCostSearch strategy = new UniformCostSearch(cost);          
+    	
+    	 // Create the search strategy
+        Strategy strategy = null;
+        switch(searchStrategy){
+		     	case(PROFUNDIDAD): 
+		     		/*if ( ((EstadoAgente) this.getAgentState()).getRamaExpandidaAObjetivo() != null){
+		     			EstadoAgente estadoAgenteClonado = (EstadoAgente) ((EstadoAgente) this.getAgentState()).clone();
+		     			Vector<NTree> vectorRama =((EstadoAgente) this.getAgentState()).getRamaExpandidaAObjetivo();
+		     			SearchAction accionRamaExpandida = vectorRama.remove(0).getAction();
+		     			if(accionRamaExpandida.execute(estadoAgenteClonado)!= null)
+		     				
+		     				return accionRamaExpandida;
+		     		}*/
+		     		strategy= new DepthFirstSearch();
+		     		break;
+		     	case(ANCHURA):
+		     		strategy = new BreathFirstSearch();
+		     		break;
+		     	case(COSTO_UNIFORME):
+		     		IStepCostFunction cost = new UniformCostFunction();
+		     		strategy = new UniformCostSearch(cost);  
+		     		break;
+		     	case(A_ASTERISCO):
+		     		strategy = new AStarSearch(new CostFunction(), new Heuristic());
+		     		break;
+     	}
+        
 
         // Create a Search object with the strategy
         Search searchSolver = new Search(strategy);
@@ -65,8 +95,9 @@ public class Patrullero extends SearchBasedAgent {
 
         // Ask the solver for the best action
         Action selectedAction = null;
-        try {
+        try {       	
             selectedAction = this.getSolver().solve(new Object[]{this.getProblem()});
+            
         } catch (Exception ex) {
             Logger.getLogger(Patrullero.class.getName()).log(Level.SEVERE, null, ex);
         }
