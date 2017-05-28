@@ -329,7 +329,7 @@ public class MainInterfaz extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/popupCalles.fxml"));
             Stage stage = new Stage();
             stage.setTitle("Seleccionar calles");
-            stage.setScene(new Scene(root, 800, 440));
+            stage.setScene(new Scene(root, 450, 200));
             stage.setResizable(false);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
             stage.show();
