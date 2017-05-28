@@ -3,6 +3,8 @@ package interfaz;
 import domain.Esquina;
 import domain.Mapa;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -16,6 +18,7 @@ import javafx.stage.Stage;
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.concurrent.CountDownLatch;
@@ -63,13 +66,15 @@ public class MainInterfaz extends Application {
         // Buscamos botón iniciar para arrancar la simulación
         Button btnIniciar = (Button)mainScene.lookup("#btnIniciar");
         btnIniciar.setOnAction((e) -> {
-            for (Node esq : esquinasContainer.getChildren()) {
-                ((Shape)esq).setFill(Color.DODGERBLUE);
-            }
+            Platform.runLater(() -> {
+                        for (Node esq : esquinasContainer.getChildren()) {
+                            ((Shape) esq).setFill(Color.DODGERBLUE);
+                        }
+                        Config.painter.pintarEsquinaById(idInicio, "inicio");
+                        Config.painter.pintarEsquinaById(idFin, "fin");
+                    });
             Thread thread = new Thread(startSimulator);
             thread.setDaemon(true);
-            Config.painter.pintarEsquinaById(idInicio, "inicio");
-            Config.painter.pintarEsquinaById(idFin, "fin");
             if (idInicio != null && idFin != null)
                 thread.start();
         });
@@ -87,7 +92,12 @@ public class MainInterfaz extends Application {
                     mapa.setPosicionAgente(e);
                     posicionAgente.setText(e.toString());
                     for (Node e1 : esquinasContainer.getChildren()) {
-                        ((Shape) e1).setFill(Color.DODGERBLUE);
+                        if (e1.getId() == idInicio)
+                            ((Shape) e1).setFill(Color.YELLOWGREEN);
+                        else if (e1.getId() == idFin)
+                            ((Shape) e1).setFill(Color.PURPLE);
+                        else
+                            ((Shape) e1).setFill(Color.DODGERBLUE);
                         e1.setOnMouseClicked(null);
                     }
 
@@ -106,12 +116,22 @@ public class MainInterfaz extends Application {
                     mapa.setPosicionAlerta(e);
                     posicionAlarma.setText(e.toString());
                     for (Node e1 : esquinasContainer.getChildren()) {
-                        ((Shape) e1).setFill(Color.DODGERBLUE);
+                        if (e1.getId() == idInicio)
+                            ((Shape) e1).setFill(Color.YELLOWGREEN);
+                        else if (e1.getId() == idFin)
+                            ((Shape) e1).setFill(Color.PURPLE);
+                        else
+                            ((Shape) e1).setFill(Color.DODGERBLUE);
                         e1.setOnMouseClicked(null);
                     }
                 });
                 ((Shape)esq).setFill(Color.RED);
             }
+        });
+
+        Button callesCortadas = (Button)mainScene.lookup("#callesCortadas");
+        callesCortadas.setOnAction(evt -> {
+            openPopupCalles(evt);
         });
 
         primaryStage.setScene(mainScene);
@@ -302,5 +322,19 @@ public class MainInterfaz extends Application {
         esquinas.put("e509", new Esquina("Pujato", "A Godoy"));
         esquinas.put("e510", new Esquina("Pujato", "Piedras"));
         esquinas.put("e85", new Esquina("Lavaisse", "Piedras"));
+    }
+
+    private void openPopupCalles(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/popupCalles.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Seleccionar calles");
+            stage.setScene(new Scene(root, 800, 440));
+            stage.setResizable(false);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

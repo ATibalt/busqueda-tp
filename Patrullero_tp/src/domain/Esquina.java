@@ -31,12 +31,7 @@ public class Esquina {
 	}
 	
 	public String toString() {
-		String nombre = "";
-		for (String c : calles) {
-			nombre += "/";
-			nombre += c;
-		}
-		return "Esq."+nombre;
+		return String.join(", ", getCalles());
 	}
 
 	@Override
@@ -53,8 +48,6 @@ public class Esquina {
 				|| this.calles.size() != esq.calles.size()) {
 			return false;
 		}
-
-
 
 		List<String> thisCalles = new ArrayList<String>(this.calles);
 		List<String> esqCalles = new ArrayList<String>(esq.calles);
