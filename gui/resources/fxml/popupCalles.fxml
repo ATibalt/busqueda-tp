@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 
 <?import javafx.scene.layout.GridPane?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/css/popupCallesCortadas.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.PopupCallesCortadas">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/css/popupCalles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane styleClass="menu" layoutX="6.0" layoutY="6.0" prefHeight="400.0" prefWidth="600.0">
          <children>
