@@ -8,6 +8,8 @@ import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.AgentState;
 import frsf.cidisi.faia.state.EnvironmentState;
+import interfaz.Config;
+import javafx.application.Platform;
 
 public class IrAnodoX extends SearchAction {
 
@@ -92,7 +94,7 @@ public class IrAnodoX extends SearchAction {
                 // Update the agent state
         		agentState.setposicionAgente(nodoX);
 
-        		// TODO: Actualizar interfaz
+                Platform.runLater(() -> Config.painter.pintarEsquina(nodoX, "medio"));
 
         		return environmentState;
         	}

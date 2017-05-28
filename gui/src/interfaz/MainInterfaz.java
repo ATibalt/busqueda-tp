@@ -3,19 +3,18 @@ package interfaz;
 import domain.Esquina;
 import domain.Mapa;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import org.apache.commons.collections4.BidiMap;
+import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 
 import java.io.PrintStream;
 import java.util.HashMap;
@@ -27,7 +26,10 @@ public class MainInterfaz extends Application {
     Runnable startSimulator;
     Mapa mapa;
 
-    private Pane esquinas;
+    private BidiMap<String, Esquina> esquinas;
+    private Pane esquinasContainer;
+    private String idInicio = null;
+    private String idFin = null;
 
     public static MainInterfaz waitForMainInterfaz() {
         try {
@@ -45,6 +47,7 @@ public class MainInterfaz extends Application {
 
     public MainInterfaz() {
         setMainInterfaz(this);
+        inicializarEsquinas();
     }
 
     @Override
@@ -60,25 +63,34 @@ public class MainInterfaz extends Application {
         // Buscamos botón iniciar para arrancar la simulación
         Button btnIniciar = (Button)mainScene.lookup("#btnIniciar");
         btnIniciar.setOnAction((e) -> {
+            for (Node esq : esquinasContainer.getChildren()) {
+                ((Shape)esq).setFill(Color.DODGERBLUE);
+            }
             Thread thread = new Thread(startSimulator);
             thread.setDaemon(true);
-            thread.start();
+            Config.painter.pintarEsquinaById(idInicio, "inicio");
+            Config.painter.pintarEsquinaById(idFin, "fin");
+            if (idInicio != null && idFin != null)
+                thread.start();
         });
 
-        esquinas = (Pane)mainScene.lookup("#esquinas");
+        esquinasContainer = (Pane)mainScene.lookup("#esquinas");
+        Config.painter = new EsquinaPainter(esquinasContainer, esquinas);
 
         Button btnPosicionAgente = (Button)mainScene.lookup("#btnPosicionAgente");
         Text posicionAgente = (Text)mainScene.lookup("#posicionAgente");
         btnPosicionAgente.setOnAction((evt) -> {
-            for (Node esq : esquinas.getChildren()) {
+            for (Node esq : esquinasContainer.getChildren()) {
                 esq.setOnMouseClicked(event -> {
+                    idInicio = esq.getId();
                     Esquina e = getEsquinaById(esq.getId());
                     mapa.setPosicionAgente(e);
                     posicionAgente.setText(e.toString());
-                    for (Node e1 : esquinas.getChildren()) {
+                    for (Node e1 : esquinasContainer.getChildren()) {
                         ((Shape) e1).setFill(Color.DODGERBLUE);
                         e1.setOnMouseClicked(null);
                     }
+
                 });
                 ((Shape)esq).setFill(Color.RED);
             }
@@ -87,12 +99,13 @@ public class MainInterfaz extends Application {
         Button btnPosicionAlarma = (Button)mainScene.lookup("#btnPosicionAlarma");
         Text posicionAlarma = (Text)mainScene.lookup("#posicionAlarma");
         btnPosicionAlarma.setOnAction((evt) -> {
-            for (Node esq : esquinas.getChildren()) {
+            for (Node esq : esquinasContainer.getChildren()) {
                 esq.setOnMouseClicked(event -> {
+                    idFin = esq.getId();
                     Esquina e = getEsquinaById(esq.getId());
                     mapa.setPosicionAlerta(e);
                     posicionAlarma.setText(e.toString());
-                    for (Node e1 : esquinas.getChildren()) {
+                    for (Node e1 : esquinasContainer.getChildren()) {
                         ((Shape) e1).setFill(Color.DODGERBLUE);
                         e1.setOnMouseClicked(null);
                     }
@@ -114,7 +127,16 @@ public class MainInterfaz extends Application {
     private Esquina getEsquinaById(String id) {
         Esquina e1 = new Esquina("General Paz", "Obispo Boneo");
 
-        HashMap<String, Esquina> esquinas = new HashMap<>();
+        Esquina esquina = esquinas.getOrDefault(id, e1);
+        return mapa.getEsquinaExistente(esquina);
+    }
+
+    private String getIdByEsquina(Esquina e) {
+        return esquinas.getKey(e);
+    }
+
+    private void inicializarEsquinas(){
+        esquinas = new DualHashBidiMap<>();
         esquinas.put("e512", new Esquina("Pasaje Arzamendia", "Lavaisse"));
         esquinas.put("e1", new Esquina("General Paz", "Obispo Boneo"));
         esquinas.put("e2", new Esquina("Tacuari", "Obispo Boneo"));
@@ -280,8 +302,5 @@ public class MainInterfaz extends Application {
         esquinas.put("e509", new Esquina("Pujato", "A Godoy"));
         esquinas.put("e510", new Esquina("Pujato", "Piedras"));
         esquinas.put("e85", new Esquina("Lavaisse", "Piedras"));
-
-        Esquina esquina = esquinas.getOrDefault(id, e1);
-        return mapa.getEsquinaExistente(esquina);
     }
 }
