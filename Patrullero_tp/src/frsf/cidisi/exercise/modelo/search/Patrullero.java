@@ -19,10 +19,10 @@ import domain.Mapa;
 public class Patrullero extends SearchBasedAgent {
 	
 	private int searchStrategy;
-	public  static final int PROFUNDIDAD = 1;
-	public  static final int ANCHURA = 2;
-	public  static final int COSTO_UNIFORME = 3;
-	public static final int A_ASTERISCO = 4;
+	private static final int PROFUNDIDAD = 1;
+	private static final int AMPLITUD = 2;
+	private static final int COSTO_UNIFORME = 3;
+	private static final int A_ASTERISCO = 4;
 
     public Patrullero(Mapa mapa, int estrategia) {
     	
@@ -37,7 +37,7 @@ public class Patrullero extends SearchBasedAgent {
         this.setAgentState(agState);
 
         // Create the operators
-        Vector<SearchAction> operators = new Vector<SearchAction>();
+        Vector<SearchAction> operators = new Vector<>();
         
         //iteración de la lista de las esquinas del mapa y creación de IrAnodoX(Esquina esquina) con cada una de las esquinas
         List<Esquina> esquinas = new ArrayList<Esquina>(mapa.getGrafo().getVertices());
@@ -59,18 +59,10 @@ public class Patrullero extends SearchBasedAgent {
     	 // Create the search strategy
         Strategy strategy = null;
         switch(searchStrategy){
-		     	case(PROFUNDIDAD): 
-		     		/*if ( ((EstadoAgente) this.getAgentState()).getRamaExpandidaAObjetivo() != null){
-		     			EstadoAgente estadoAgenteClonado = (EstadoAgente) ((EstadoAgente) this.getAgentState()).clone();
-		     			Vector<NTree> vectorRama =((EstadoAgente) this.getAgentState()).getRamaExpandidaAObjetivo();
-		     			SearchAction accionRamaExpandida = vectorRama.remove(0).getAction();
-		     			if(accionRamaExpandida.execute(estadoAgenteClonado)!= null)
-		     				
-		     				return accionRamaExpandida;
-		     		}*/
+                case(PROFUNDIDAD):
 		     		strategy= new DepthFirstSearch();
 		     		break;
-		     	case(ANCHURA):
+		     	case(AMPLITUD):
 		     		strategy = new BreathFirstSearch();
 		     		break;
 		     	case(COSTO_UNIFORME):
