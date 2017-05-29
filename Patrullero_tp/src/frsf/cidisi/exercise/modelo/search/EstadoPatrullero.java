@@ -18,9 +18,9 @@ public class EstadoPatrullero extends SearchBasedAgentState {
     private Esquina posicionAlerta;
 	private List<Calle> callesCortadas;
 	private List<Calle> callesCongestionadas;
+    private Double combustible;
+
 	private double costo;
-	
-	//TODO: costo como atributo? Ver ejemplo snake, incrementan el costo en el primer execute de una action
 	
     public EstadoPatrullero(Mapa mapa) {
     	this.mapa = mapa;
@@ -29,6 +29,7 @@ public class EstadoPatrullero extends SearchBasedAgentState {
     	callesCortadas = new ArrayList<Calle>();
     	callesCongestionadas = new ArrayList<Calle>();
     	costo = 0.0;
+    	combustible = 0d;
         this.initState();
     }
 
@@ -42,6 +43,7 @@ public class EstadoPatrullero extends SearchBasedAgentState {
     	callesCortadas = this.mapa.getCallesCortadas();
     	callesCongestionadas = this.mapa.getCallesCongestionadas();
     	costo = 0.0;
+    	combustible = new Double(500);
     }
     
     /**
@@ -71,7 +73,8 @@ public class EstadoPatrullero extends SearchBasedAgentState {
 		}
 		
 		estadoClone.costo = this.costo;
-		
+		estadoClone.combustible = this.combustible;
+
         return estadoClone;
     }
 
@@ -98,6 +101,7 @@ public class EstadoPatrullero extends SearchBasedAgentState {
 
         str += "\n			Posicion de la alerta: "+this.posicionAlerta.toString();
         str += "\n			Posicion del agente: "+this.posicionAgente.toString();
+        str += "\n			Combustible restante: "+this.combustible.toString();
         return str;
     }
 
@@ -107,7 +111,6 @@ public class EstadoPatrullero extends SearchBasedAgentState {
      */
     @Override
     public boolean equals(Object obj) {
-       //TODO: Complete Method
     	 if (!(obj instanceof EstadoPatrullero)) {
              return false;
          }
@@ -158,5 +161,9 @@ public class EstadoPatrullero extends SearchBasedAgentState {
 	public void incrementarCosto(double costo){
 		this.costo += costo;
 	}
+
+	public Double getCombustible() { return this.combustible;}
+
+	public void  decrementarCombustible( Double comb){ this.combustible -= comb;}
 }
 
