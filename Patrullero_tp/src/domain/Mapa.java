@@ -852,7 +852,7 @@ public class Mapa {
 		g.addEdge(JPL4, e49, e50);
 		g.addEdge(JPL3, e50, e51);
 		g.addEdge(AC11, e52, e53);
-		Calle AC11_2 = new Calle("Angel Cassanello", 1000, false, false);
+		Calle AC11_2 = new Calle("Angel Cassanello", 1100, false, false);
 		g.addEdge(AC11_2, e53, e52);
 		g.addEdge(AC10, e53, e54);
 		Calle AC10_2 = new Calle("Angel Cassanello", 1000, false, false);
