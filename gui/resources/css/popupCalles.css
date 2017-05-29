@@ -1,5 +1,17 @@
 .menu {
     -fx-padding: 20px 50px 10px 20px;
-    -fx-vgap: 5px;
+    -fx-vgap: 10px;
     -fx-hgap: 5px;
+}
+
+.boton-eliminar:hover {
+    -fx-fill: darkslategrey;
+}
+
+.boton-eliminar:pressed {
+    -fx-fill: dimgrey;
+}
+
+#callesContainer {
+    -fx-padding: 10px 15px;
 }

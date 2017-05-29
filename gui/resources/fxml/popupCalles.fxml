@@ -2,17 +2,37 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/css/popupCalles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/css/popupCalles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.CalleController">
    <children>
-      <GridPane styleClass="menu" layoutX="6.0" layoutY="6.0" prefHeight="400.0" prefWidth="600.0">
+      <GridPane layoutX="6.0" layoutY="6.0" prefHeight="400.0" prefWidth="600.0" styleClass="menu">
          <children>
-            <ComboBox GridPane.columnIndex="0" prefWidth="150.0" promptText="Calle" />
-            <ComboBox GridPane.columnIndex="1" prefWidth="150.0" promptText="Altura" />
-            <Button GridPane.columnIndex="1" GridPane.rowIndex="2" mnemonicParsing="false" text="Aceptar" />
-         </children></GridPane>
+            <ComboBox fx:id="callesCombo" prefWidth="150.0" promptText="Calle" GridPane.columnIndex="0" />
+            <ComboBox fx:id="alturasCombo" prefWidth="150.0" promptText="Altura" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" text="Agregar" GridPane.columnIndex="2" onAction="#onCalleAgregada" />
+            <ScrollPane fx:id="scrollPane" prefHeight="150" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                <Pane>
+                    <VBox fx:id="callesContainer" prefHeight="148.0" prefWidth="334.0" alignment="TOP_CENTER" spacing="8" />
+                </Pane>
+            </ScrollPane>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints></GridPane>
    </children>
 </AnchorPane>

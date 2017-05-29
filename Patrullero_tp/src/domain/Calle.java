@@ -79,6 +79,6 @@ public class Calle {
 	}
 
 	public String toString() {
-		return "Calle."+this.nombre+" "+this.altura;
+		return this.nombre+" al "+this.altura;
 	}
 }

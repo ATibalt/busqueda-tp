@@ -1,5 +1,6 @@
 package interfaz;
 
+import domain.Calle;
 import domain.Esquina;
 import domain.Mapa;
 import javafx.application.Application;
@@ -11,10 +12,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 
@@ -131,7 +134,12 @@ public class MainInterfaz extends Application {
 
         Button callesCortadas = (Button)mainScene.lookup("#callesCortadas");
         callesCortadas.setOnAction(evt -> {
-            openPopupCalles(evt);
+            openPopupCalles(evt, true);
+        });
+
+        Button callesCongestionadas = (Button)mainScene.lookup("#callesCongestionadas");
+        callesCongestionadas.setOnAction(evt -> {
+            openPopupCalles(evt, false);
         });
 
         primaryStage.setScene(mainScene);
@@ -324,13 +332,28 @@ public class MainInterfaz extends Application {
         esquinas.put("e85", new Esquina("Lavaisse", "Piedras"));
     }
 
-    private void openPopupCalles(ActionEvent actionEvent) {
+    private void openPopupCalles(ActionEvent actionEvent, boolean cortadas) {
+        Callback<Class<?>, Object> controllerFactory = type -> {
+            if (type == CalleController.class) {
+                return new CalleController(mapa, cortadas);
+            } else {
+                try {
+                    return type.newInstance() ; // default behavior - invoke no-arg construtor
+                } catch (Exception exc) {
+                    System.err.println("Could not create controller for "+type.getName());
+                    throw new RuntimeException(exc);
+                }
+            }
+        };
+
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/popupCalles.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/popupCalles.fxml"));
+            loader.setControllerFactory(controllerFactory);
+            Parent root = loader.load();
             Stage stage = new Stage();
             stage.setTitle("Seleccionar calles");
-            stage.setScene(new Scene(root, 450, 200));
-            stage.setResizable(false);
+            stage.setScene(new Scene(root, 420, 250));
+            stage.setResizable(true);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
             stage.show();
         } catch (IOException e) {

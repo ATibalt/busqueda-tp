@@ -44,6 +44,9 @@ public class EsquinaPainter {
             case "medio":
                 circuloEsquina.setFill(Color.GREEN);
                 break;
+            case "cortada":
+                circuloEsquina.setFill(Color.RED);
+                break;
             default:
                 circuloEsquina.setFill(Color.DODGERBLUE);
                 break;

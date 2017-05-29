@@ -142,7 +142,9 @@ public class Mapa {
 	}
 
 	public List<Calle> getCalles() {
-		return (List<Calle>)g.getEdges();
+		List<Calle> calles = new ArrayList<>();
+		calles.addAll(g.getEdges());
+		return calles;
 	}
 
 	public void Crear() {
