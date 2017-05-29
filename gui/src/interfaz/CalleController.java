@@ -48,14 +48,15 @@ public class CalleController implements Initializable {
                 alturasCombo.getItems().clear();
                 alturasCombo.getSelectionModel().clearSelection();
                 alturasCombo.setDisable(false);
-                List<Integer> alturas = new ArrayList<>();
+                Set<Integer> alturas = new HashSet<>();
                 for (Calle calle : mapa.getCalles()) {
                     if (calle.getNombre().equals(newValue)) {
                         alturas.add(calle.getAltura());
                     }
                 }
-                Collections.sort(alturas);
-                alturasCombo.getItems().addAll(alturas);
+                List<Integer> alturasSorted = new ArrayList<>(alturas);
+                Collections.sort(alturasSorted);
+                alturasCombo.getItems().addAll(alturasSorted);
             }
         });
 
@@ -83,6 +84,8 @@ public class CalleController implements Initializable {
         if (callesAAgregar.isEmpty())
             return;
         CalleNode nodeCalle = new CalleNode(callesAAgregar.get(0));
+        if (callesContainer.getChildren().contains(nodeCalle))
+            return;
         nodeCalle.setOnEliminarHandler(event -> {
             if (cortadas)
                 mapa.getCallesCortadas().removeAll(callesAAgregar);
