@@ -351,9 +351,9 @@ public class MainInterfaz extends Application {
             loader.setControllerFactory(controllerFactory);
             Parent root = loader.load();
             Stage stage = new Stage();
-            stage.setTitle("Seleccionar calles");
-            stage.setScene(new Scene(root, 420, 250));
-            stage.setResizable(true);
+            stage.setTitle("Seleccionar Calles " + (cortadas ? "Cortadas" : "Congestionadas"));
+            stage.setScene(new Scene(root, 410, 240));
+            stage.setResizable(false);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
             stage.show();
         } catch (IOException e) {
