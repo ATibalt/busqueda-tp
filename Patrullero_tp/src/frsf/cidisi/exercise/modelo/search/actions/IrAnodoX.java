@@ -47,10 +47,6 @@ public class IrAnodoX extends SearchAction {
 			}
         	
         	if(callesCortadas.contains(calleEntreEsquinas)){
-                Platform.runLater(() -> {
-                    Config.painter.pintarEsquina(posicionAgente, "cortada");
-                    Config.painter.pintarEsquina(nodoX, "cortada");
-                });
         		return null;
         	}else{
         		//si la calle no está cortada, entonces el agente pasa a estar en la esquina X

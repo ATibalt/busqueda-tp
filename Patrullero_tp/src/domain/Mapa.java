@@ -147,6 +147,10 @@ public class Mapa {
 		return calles;
 	}
 
+	public List<Esquina> getEsquinasDeCalle(Calle calle) {
+		return new ArrayList<>(g.getIncidentVertices(calle));
+	}
+
 	public void Crear() {
 		g = new DirectedSparseMultigraph<Esquina, Calle>();
 
@@ -457,6 +461,7 @@ public class Mapa {
 		Calle La8 = new Calle("Lavaisse", 800, false, false);
 		Calle La9 = new Calle("Lavaisse", 900, false, false);
 		Calle La10 = new Calle("Lavaisse", 1000, false, false);
+		Calle La10_2 = new Calle("Lavaisse", 1000, false, false);
 		Calle La11 = new Calle("Lavaisse", 1100, false, false);
 		Calle La115 = new Calle("Lavaisse", 1150, false, false);
 		Calle La12 = new Calle("Lavaisse", 1200, false, false);
@@ -938,6 +943,7 @@ public class Mapa {
 		g.addEdge(La115, e81, e519);
 		g.addEdge(La11, e519, e82);
 		g.addEdge(La10, e82, e83);
+		g.addEdge(La10_2, e83, e82);
 		g.addEdge(La9, e83, e84);
 		g.addEdge(La8, e84, e85);
 		g.addEdge(La7, e85, e86);
