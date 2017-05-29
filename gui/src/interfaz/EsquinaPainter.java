@@ -47,6 +47,9 @@ public class EsquinaPainter {
             case "cortada":
                 circuloEsquina.setFill(Color.RED);
                 break;
+            case "congestionada":
+                circuloEsquina.setFill(Color.ORANGE);
+                break;
             default:
                 circuloEsquina.setFill(Color.DODGERBLUE);
                 break;

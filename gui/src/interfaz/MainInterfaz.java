@@ -71,10 +71,8 @@ public class MainInterfaz extends Application {
         btnIniciar.setOnAction((e) -> {
             Platform.runLater(() -> {
                         for (Node esq : esquinasContainer.getChildren()) {
-                            ((Shape) esq).setFill(Color.DODGERBLUE);
+                            repintarEsquina(esq);
                         }
-                        Config.painter.pintarEsquinaById(idInicio, "inicio");
-                        Config.painter.pintarEsquinaById(idFin, "fin");
                     });
             Thread thread = new Thread(startSimulator);
             thread.setDaemon(true);
@@ -95,12 +93,7 @@ public class MainInterfaz extends Application {
                     mapa.setPosicionAgente(e);
                     posicionAgente.setText(e.toString());
                     for (Node e1 : esquinasContainer.getChildren()) {
-                        if (e1.getId() == idInicio)
-                            ((Shape) e1).setFill(Color.YELLOWGREEN);
-                        else if (e1.getId() == idFin)
-                            ((Shape) e1).setFill(Color.PURPLE);
-                        else
-                            ((Shape) e1).setFill(Color.DODGERBLUE);
+                        repintarEsquina(e1);
                         e1.setOnMouseClicked(null);
                     }
 
@@ -119,12 +112,7 @@ public class MainInterfaz extends Application {
                     mapa.setPosicionAlerta(e);
                     posicionAlarma.setText(e.toString());
                     for (Node e1 : esquinasContainer.getChildren()) {
-                        if (e1.getId() == idInicio)
-                            ((Shape) e1).setFill(Color.YELLOWGREEN);
-                        else if (e1.getId() == idFin)
-                            ((Shape) e1).setFill(Color.PURPLE);
-                        else
-                            ((Shape) e1).setFill(Color.DODGERBLUE);
+                        repintarEsquina(e1);
                         e1.setOnMouseClicked(null);
                     }
                 });
@@ -161,6 +149,19 @@ public class MainInterfaz extends Application {
 
     private String getIdByEsquina(Esquina e) {
         return esquinas.getKey(e);
+    }
+
+    private void repintarEsquina(Node esquina) {
+        if (esquina.getId().equals(idInicio))
+            ((Shape) esquina).setFill(Color.YELLOWGREEN);
+        else if (esquina.getId().equals(idFin))
+            ((Shape) esquina).setFill(Color.PURPLE);
+        else
+            ((Shape) esquina).setFill(Color.DODGERBLUE);
+        for (Calle calle : mapa.getCallesCortadas())
+            mapa.getEsquinasDeCalle(calle).forEach(esquina1 -> Config.painter.pintarEsquina(esquina1, "cortada"));
+        for (Calle calle : mapa.getCallesCongestionadas())
+            mapa.getEsquinasDeCalle(calle).forEach(esquina1 -> Config.painter.pintarEsquina(esquina1, "congestionada"));
     }
 
     private void inicializarEsquinas(){
