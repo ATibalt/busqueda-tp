@@ -36,7 +36,7 @@ public class IrAnodoX extends SearchAction {
         List<Calle> callesCongestionadas = agentState.getCallesCongestionadas();
         
         if(esquinasAdyacentes.contains(nodoX)){	
-        	//calle entre la esquina actual del agente y la esquina a la que ir·
+        	//calle entre la esquina actual del agente y la esquina a la que ir√°
         	Calle calleEntreEsquinas = new Calle();
         	
 			try {
@@ -49,11 +49,11 @@ public class IrAnodoX extends SearchAction {
         	if(callesCortadas.contains(calleEntreEsquinas)){
         		return null;
         	}else{
-        		//si la calle no est· cortada, entonces el agente pasa a estar en la esquina X
+        		//si la calle no est√° cortada, entonces el agente pasa a estar en la esquina X
         		agentState.setposicionAgente(nodoX);
         		
         		if(callesCongestionadas.contains(calleEntreEsquinas)){
-        			//si la calle no est· cortada pero si congestionada, tendr· un costo ir a la esquina X
+        			//si la calle no est√° cortada pero si congestionada, tendr√° un costo ir a la esquina X
         			this.costoAccion = costoAccion*10;
         		}
                 agentState.incrementarCosto(this.costoAccion);
