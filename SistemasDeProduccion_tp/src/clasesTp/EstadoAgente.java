@@ -7,8 +7,8 @@ package clasesTp;
 
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.state.AgentState;
-import procesamiento.Lista;
-import procesamiento.Preprocesamiento;
+
+import java.util.Arrays;
 
 /**
  *
@@ -21,13 +21,12 @@ public class EstadoAgente extends AgentState{
     @Override
     public void updateState(Perception p) {
         Percepcion perception = (Percepcion)p;
-        //TODO: hacer preprocesamiento del input
-        //oracionPreprocesada= Preprocesamiento.start(perception.getInput());
+        oracionPreprocesada= Procesamiento.start(perception.getInput());
     }
 
     @Override
     public String toString() {
-        return "Oracion preprocesada: "+ oracionPreprocesada.toString(); 
+        return "Oracion preprocesada: "+ Arrays.toString(oracionPreprocesada);
     }
 
     @Override

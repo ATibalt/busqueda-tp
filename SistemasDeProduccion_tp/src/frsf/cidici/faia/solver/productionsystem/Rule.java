@@ -2,13 +2,13 @@ package frsf.cidici.faia.solver.productionsystem;
 
 /**
  * Clase que modela elas reglas del sistema de produccion.
- * @author Grupo 12: Blas,María Julia / Diaz Ferreyra,Nicolas/ Sarli, Juan Leonardo.
+ * @author Grupo 12: Blas,Marï¿½a Julia / Diaz Ferreyra,Nicolas/ Sarli, Juan Leonardo.
  */
 public abstract class Rule {
 	
 	Object condition;
 	Object then;
-	int id;
+	double id;
 	int specificity;
 	int priority;
 	int novelty;
@@ -20,11 +20,11 @@ public abstract class Rule {
 		novelty = 0;
 	}
 	
-	public Integer getId(){
-		return new Integer(id);
+	public Double getId(){
+		return new Double(id);
 	}	
 	
-	public void setId(int identificador){
+	public void setId(double identificador){
 		id = identificador;
 	}
 	
