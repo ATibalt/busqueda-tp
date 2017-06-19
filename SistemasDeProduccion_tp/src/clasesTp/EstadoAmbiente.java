@@ -14,14 +14,14 @@ public class EstadoAmbiente extends EnvironmentState {
 	
     private LinkedList<String> log;
     private String input;
-    private String rta;
+    private String output;
 
     /**
      * Constructor.
      */
     public EstadoAmbiente() {
         log = new LinkedList<String>();
-    	rta = "";
+    	output = "";
     }
 
     /**
@@ -58,12 +58,12 @@ public class EstadoAmbiente extends EnvironmentState {
          input = arg;
      }
 
-     public String getrta(){
-         return rta;
+     public String getoutput(){
+         return output;
      }
      
-     public void setrta(String arg){
-         rta = arg;
+     public void setoutput(String arg){
+         output = arg;
      }
 
      public void agregarLineaAlLog(String linea){
@@ -75,7 +75,7 @@ public class EstadoAmbiente extends EnvironmentState {
       * @param resp
       */
      public void actualizar(String resp){
-        rta = resp;
+        output = resp;
     	if (resp!=null) 
              this.agregarLineaAlLog(resp);
      }
@@ -83,8 +83,8 @@ public class EstadoAmbiente extends EnvironmentState {
      /**
       * Metodo que borra la respuesta.
       */
-     public void borrarRta(){
-    	 rta = "";
+     public void borraroutput(){
+    	 output = "";
      }
      
     public void updateState(AgentState ast, Rule rule) {

@@ -16,12 +16,13 @@ import procesamiento.Preprocesamiento;
  */
 public class EstadoAgente extends AgentState{
     
-    private Lista oracionPreprocesada;
+    private String[] oracionPreprocesada;
 
     @Override
     public void updateState(Perception p) {
         Percepcion perception = (Percepcion)p;
-        oracionPreprocesada= Preprocesamiento.start(perception.getInput());
+        //TODO: hacer preprocesamiento del input
+        //oracionPreprocesada= Preprocesamiento.start(perception.getInput());
     }
 
     @Override
@@ -34,7 +35,7 @@ public class EstadoAgente extends AgentState{
         //TODO
     }
 
-    public Lista getOracionPreprocesada() {
+    public String[] getOracionPreprocesada() {
         return oracionPreprocesada;
     }
     

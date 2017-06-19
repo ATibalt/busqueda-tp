@@ -2,13 +2,10 @@ package frsf.cidici.faia.solver.productionsystem;
 
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.solver.Solve;
-import procesamiento.Lista;
-import procesamiento.Nodo;
-import tp.Datos;
-import tp.Regla;
+import clasesTp.Datos;
+import clasesTp.Regla;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Clase que implementa el solver del sistema de producci�n.
@@ -17,21 +14,19 @@ import java.util.List;
 public class ProductionSystem extends Solve{
 
 	//TODO Futuro: Agregar la MI, MP y MT.
-	private List<Criteria> criteria= new ArrayList<>();
-        public static List<Rule> used = new ArrayList<>();
-        private Lista memoriaTrabajo;
-        public static List<Regla> memoriaProduccion= Datos.cargarDatos();
-        
-        
-	
-        
-	
+    private LinkedList<Criteria> criteria;
+    public static LinkedList<PeerRuleData> used = new LinkedList<PeerRuleData>();
+    //oración ya procesada, es decir, las palabras claves (antecedentes de una regla)
+    private String[] oracionProcesada = {};
+
+    public static List<Regla> memoriaProduccion= Datos.cargarDatos();
+
 	/**
 	 * Constructor.
 	 * Recibe las estrategias en el orden a ser aplicadas.
      * @param s
 	 */
-	public ProductionSystem(List<Criteria> s){
+	public ProductionSystem(LinkedList<Criteria> s){
 		criteria = s;
 	}
 	
@@ -42,101 +37,67 @@ public class ProductionSystem extends Solve{
 	@Override
 	public Action solve(Object[] params) throws Exception {
 
-            Rule reglaSeleccionada;
+            PeerRuleData reglaSeleccionada;
 
-            memoriaTrabajo= (Lista) params[0];
-
+            oracionProcesada= (String[]) params;
 
             //Se obtienen las reglas activas
-            List<Regla> activeRules = this.match();
+            LinkedList<PeerRuleData> activeRules = this.match();
 
             //Si no hay reglas activas se termina.
             if(activeRules.isEmpty())
-                activeRules= Datos.getRestoEstimulos();
-                
+                //TODO: cambiar, se retornan reglas tipo Entrada incorrecta, o no se puede procesar la frase
+                //activeRules= Datos.getRestoEstimulos();
+                return null;
             
             System.out.println("Reglas activas:");
-             for(Regla reglaIterada : activeRules)
+             for(PeerRuleData reglaIterada : activeRules)
                     {
-                            System.out.print("(" + reglaIterada.getId() + ") ");
+                            System.out.print("(" + reglaIterada.getRule().getId() + ") ");
                     }
-                    //Se resuelven los conflictos.
-            for(Criteria actualCriteria: criteria){
-                if(activeRules.size()==1) break;
+            //Se resuelven los conflictos.
+            for(Iterator<Criteria> i = criteria.iterator(); i.hasNext();)
+            {
+                Criteria actualCriteria = i.next();
                 System.out.println("\nCriterio:" + actualCriteria.toString());
-                List<Regla> finalRules = actualCriteria.apply(activeRules);
-                if(finalRules.size()==0) 
-                    System.out.print("No hay reglas en Conflicto");
-                else{
+                LinkedList<PeerRuleData> finalRules = actualCriteria.apply(activeRules);
+                if(finalRules.size()==0) System.out.print("Reglas en Conflicto: -");
+                else
+                {
                     System.out.print("Reglas en Conflicto: ");
-                    for(Regla reglaIterada : finalRules)
+                    for(Iterator<PeerRuleData> j = finalRules.iterator(); j.hasNext();)
                     {
-                            System.out.print("(" + reglaIterada.getId() + ") ");
+                        System.out.print("(" + j.next().getRule().getId().toString() + ") ");
                     }
                     activeRules = finalRules;
+                    if(activeRules.size()==1) break;
                 }
             }
 
             //Se obtiene la regla elegida.
-            reglaSeleccionada = activeRules.get(0);
+            reglaSeleccionada = activeRules.getFirst();
 
             //Se ejecuta la regla.
             this.ejecutar(reglaSeleccionada);
-
-
 
             return new ProductionSystemAction(reglaSeleccionada);
 		
 	}
 	
-	protected List<Regla> match(){
-            List<Regla> retorno = new ArrayList<>();
-		for(Regla reglaIterada: memoriaProduccion){
-                    if(reglaIterada.contiene(memoriaTrabajo)){
-                        if(reglaIterada.getId()>=4.0 && reglaIterada.getId()<5.0){
-                            for(Nodo nodoIterado: memoriaTrabajo.getLista()){
-                                if(nodoIterado.getClave().equals("materiadetectada")){
-                                    if(Datos.getMateriaRendir(nodoIterado.getPalabra().getPalabra())==null){
-                                        if(reglaIterada.getId()==4.1)
-                                            retorno.add(reglaIterada);
-                                    }
-                                    else retorno.add(reglaIterada);
-                                }
-                            }
-                        }
-                        else retorno.add(reglaIterada);
-                         
-                        
-                    }
-                }
-                
-		return retorno;
+	protected LinkedList<PeerRuleData> match(){
+        LinkedList<PeerRuleData> reglasRetorno = new LinkedList<PeerRuleData>();
+        List<String> oracionList = new ArrayList<String>(Arrays.asList(this.oracionProcesada));
+
+        for(Regla regla : memoriaProduccion) {
+            if (regla.contiene(oracionList)) {
+                PeerRuleData parReglaDato = new PeerRuleData(regla, oracionList);
+                reglasRetorno.add(parReglaDato);
+            }
+        }
+		return reglasRetorno;
 	}
 	
-	protected void ejecutar(Rule r){
+	protected void ejecutar(PeerRuleData r){
             used.add(r);
-		
 	}
-
-    private static List<Regla> cargarReglas() {
-        
-        /*List<Regla> retorno = new ArrayList<>();
-        List<String> listaCondicion= new ArrayList<>();
-        
-        listaCondicion.add("hola");
-        Regla regla1= new Regla(listaCondicion,"Buenas");
-        regla1.setId(1);
-        retorno.add(regla1);
-        
-     
-        Regla regla2= new Regla(listaCondicion,"Hola");
-        regla2.setId(2);
-        retorno.add(regla2);*/
-        
-        
-        return null;
-        
-        
-    }
-
 }

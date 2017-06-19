@@ -4,27 +4,27 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- * Clase que implementa el criterio de especificidad.
+ * Clase que implementa el criterio de novedad.
  * @author Grupo 12: Blas,María Julia / Diaz Ferreyra,Nicolas/ Sarli, Juan Leonardo.
  */
-public class Specificity extends Criteria {
+public class Novelty extends Criteria {
 
 	@Override
 	public LinkedList<PeerRuleData> apply(LinkedList<PeerRuleData> list) {
-		
-		int specifity, mayor = 0;		
+
+		int novelty, mayor = 0;		
     	for(Iterator<PeerRuleData> i = list.iterator(); i.hasNext();)
     	{
     		Rule r = i.next().getRule();
-    		specifity = r.getSpecificity();
-    		if(specifity > mayor) mayor = specifity;
+    		novelty = r.getNovelty();
+    		if(novelty > mayor) mayor = novelty;
     	}
     	LinkedList<PeerRuleData> ret = new LinkedList<PeerRuleData>();
     	for(Iterator<PeerRuleData> i = list.iterator(); i.hasNext();)
     	{
     		PeerRuleData prd = i.next();
     		Rule r = prd.getRule();
-    		if(r.getSpecificity() == mayor) ret.add(prd);
+    		if(r.getNovelty() == mayor) ret.add(prd);
     	}    	
 		return ret;
 		
@@ -32,7 +32,7 @@ public class Specificity extends Criteria {
 
 	@Override
 	public String toString() {
-		return "Specificity (Especificidad)";
+		return "Novelty (Novedad)";
 	}
 
 }

@@ -85,7 +85,7 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
             else
             {
             	ProductionSystemAction act = (ProductionSystemAction) action;
-            	System.out.println("\nRule to execute: " + act.getRule().getId());
+            	System.out.println("\nRule to execute: " + act.getPeerRuleData().getRule().getId());
                 try {
                     imprimirThen(act, agent.getAgentState());
                 } catch (IOException ex) {
@@ -124,7 +124,7 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
 
 	protected boolean finishForRule(ProductionSystemAction action) {
 		
-            return(((String)action.getRule().getThen()).equalsIgnoreCase("chau"));           
+            return(((String)action.getPeerRuleData().getRule().getThen()).equalsIgnoreCase("Proceso finalizado."));
 	}
 	
 	public String getSimulatorName() {

@@ -7,21 +7,21 @@ import clasesTp.EstadoAmbiente;
 /**
  * Clase que implementa las acciones que el sistema de produccion puede
  * devolverle al ambiente.
- * @author Grupo 12: Blas,Marï¿½a Julia / Diaz Ferreyra,Nicolas/ Sarli, Juan Leonardo.
+ * @author Grupo 12: Blas,María Julia / Diaz Ferreyra,Nicolas/ Sarli, Juan Leonardo.
  */
 public class ProductionSystemAction extends frsf.cidisi.faia.agent.Action {
 
-	Rule rule;
+	PeerRuleData ruleData;
 	
-	public ProductionSystemAction(Rule r){
-		rule = r;
+	public ProductionSystemAction(PeerRuleData r){
+		ruleData = r;
 	}
 	
 	@Override
 	public EnvironmentState execute(AgentState ast, EnvironmentState est){
-		//TODO Futuro: Esto esta armado para el Chatbot pero deberï¿½a incorporarse en la clase Enviroment el metodo update.
+		//TODO Futuro: Esto esta armado para el Chatbot pero debería incorporarse en la clase Enviroment el metodo update.
 		EstadoAmbiente cest = (EstadoAmbiente) est;
-		cest.updateState(ast,rule);
+		cest.updateState(ast,ruleData.getRule());
 		return cest;
 	}
 
@@ -30,8 +30,8 @@ public class ProductionSystemAction extends frsf.cidisi.faia.agent.Action {
 		return "Ejecutar";
 	}
 	
-	public Rule getRule(){
-		return rule;
+	public PeerRuleData getPeerRuleData(){
+		return ruleData;
 	}
 
 }

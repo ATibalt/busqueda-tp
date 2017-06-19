@@ -9,9 +9,9 @@ import frsf.cidici.faia.solver.productionsystem.*;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Agent;
 import frsf.cidisi.faia.agent.Perception;
-import procesamiento.Lista;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -24,9 +24,16 @@ public class Agente extends Agent{
     ProductionSystem maquinaInferencia;
             
     public Agente(){
-        List<Criteria> criterios = new ArrayList<>();
+        LinkedList<Criteria> criterios = new LinkedList<>();
+        //Creacion del criterio Especificidad
         criterios.add(new Specificity());
+        //Creacion del criterio No duplicacion
         criterios.add(new NoDuplication());
+        //Creacion del criterio Prioridad
+        criterios.add(new Priority());
+        //Creacion del criterio Novedad
+        criterios.add(new Novelty());
+        //Creacion del criterio Aleatorio
         criterios.add(new Random());
         estado= new EstadoAgente();
         maquinaInferencia= new ProductionSystem(criterios);
@@ -51,7 +58,7 @@ public class Agente extends Agent{
     }
 
     public Action learn() throws Exception {
-        Lista[] arregloLista = {estado.getOracionPreprocesada()};
+        String[] arregloLista = estado.getOracionPreprocesada();
         return maquinaInferencia.solve(arregloLista);
         
     }

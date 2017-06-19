@@ -6,9 +6,6 @@
 package clasesTp;
 
 import frsf.cidici.faia.solver.productionsystem.Rule;
-import procesamiento.Lista;
-import procesamiento.Nodo;
-
 import java.util.List;
 
 /**
@@ -29,7 +26,17 @@ public class Regla extends Rule {
         //TODO setear los ids y toodo eso
     }
 
-    public boolean contiene(Lista lista) {
+    public boolean contiene(List<String> oracion) {
+        int cantidadEncontrada=0;
+        List<String> condicion = (List<String>)this.getCondition();
+
+        for(int i = 0; i <= condicion.size(); i++ ){
+            if(condicion.get(i).toLowerCase().equals(oracion.get(i).toLowerCase())){
+                cantidadEncontrada++;
+            }
+        }
+        return  cantidadEncontrada == condicion.size();
+       /*
         int cantidadEncontrada=0;
         for(Nodo nodoIterado: lista.getLista()){
             for(String condicionIterada: (List<String>)this.getCondition()){
@@ -37,8 +44,7 @@ public class Regla extends Rule {
                     cantidadEncontrada++;
             }
         }
-        return  cantidadEncontrada== ((List<String>)this.getCondition()).size();
-       
+        return  cantidadEncontrada== ((List<String>)this.getCondition()).size();*/
     
     }
     

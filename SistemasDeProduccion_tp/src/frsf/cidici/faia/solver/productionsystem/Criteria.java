@@ -1,16 +1,14 @@
 package frsf.cidici.faia.solver.productionsystem;
 
-import clasesTp.Regla;
-
-import java.util.List;
+import java.util.LinkedList;
 
 /**
  * Clase que engloba el comportamiento de los criterios del sistema de produccion.
- * @author Grupo 12: Blas,Marï¿½a Julia / Diaz Ferreyra,Nicolas/ Sarli, Juan Leonardo.
+ * @author Grupo 12: Blas,María Julia / Diaz Ferreyra,Nicolas/ Sarli, Juan Leonardo.
  */
 public abstract class Criteria {	
 
-	public abstract List<Regla> apply(List<Regla> list);
+	public abstract LinkedList<PeerRuleData> apply(LinkedList<PeerRuleData> list);
 	public abstract String toString();
 	
 }
