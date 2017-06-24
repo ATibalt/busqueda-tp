@@ -82,7 +82,7 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
             }
 
             if (action == null)
-            	printAll.accept("\nRule to execute: None");
+            	printAll.accept("\nRule to execute: None - No se detecto ningun incidente para dicha frase");
             else
             {
             	ProductionSystemAction act = (ProductionSystemAction) action;
@@ -101,7 +101,9 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
         //} while (!this.finishForRule((ProductionSystemAction)action) && !this.finishForAgentState(agent));
 
         // Check what happened.
-        if (this.finishForRule((ProductionSystemAction)action)) {
+        if(action == null){
+            printAll.accept("The agent has finished, none rule for execute.");
+        }else if (this.finishForRule((ProductionSystemAction)action)) {
             printAll.accept("The agent has executed the finish rule.");
         } else {
             printAll.accept("The agent has finished learning!");

@@ -484,7 +484,7 @@ public class Datos {
         regla79.setId(36.2);
         listaReglas.add(regla79);
 
-        listaExcepcion = new ArrayList<>();
+        //listaExcepcion = new ArrayList<>();
 
 
 
@@ -508,6 +508,5 @@ public class Datos {
         Regla regla1 = new Regla(condicion, "Frase no reconocida");
         regla1.setId(37.0);
         listaExcepcion.add(regla1);
-
-    }
-    */
+*/
+}
