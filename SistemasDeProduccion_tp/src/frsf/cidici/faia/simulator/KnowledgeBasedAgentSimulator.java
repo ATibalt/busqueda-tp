@@ -89,6 +89,7 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
             	printAll.accept("\nRule to execute: " + act.getPeerRuleData().getRule().getId());
                 try {
                     imprimirThen(act, agent.getAgentState());
+                    this.ejecutarBusqueda(act);
                 } catch (IOException ex) {
                     Logger.getLogger(KnowledgeBasedAgentSimulator.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -120,6 +121,17 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
 		
 	}
 
+	public void ejecutarBusqueda(ProductionSystemAction action){
+        double idRegla = action.getPeerRuleData().getRule().getId();
+        if(idRegla == 1.0 || idRegla == 2.1 || idRegla == 3.0 || idRegla == 5.0 || idRegla == 6.0 || idRegla == 7.0
+                || idRegla == 8.0 || idRegla == 9.1 || idRegla == 11.1 || idRegla == 12.0 || idRegla == 13.0|| idRegla == 14.1
+                || idRegla == 15.1|| idRegla == 17.0|| idRegla == 18.0|| idRegla == 19.1 || idRegla == 22.0|| idRegla == 25.0
+                || idRegla == 27.1|| idRegla == 28.1|| idRegla == 29.0|| idRegla == 30.1|| idRegla == 31.0|| idRegla == 32.1
+                || idRegla == 33.1|| idRegla == 34.0|| idRegla == 35.1|| idRegla == 36.2){
+            //TODO: Ejecutar tp 1
+        }
+    }
+
 	protected boolean finishForAgentState(Agent agent) {
 		// TODO Futuro: Ver como deber� ser este m�todo
 		return false;
@@ -149,9 +161,7 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
 
 
     private void imprimirThen(ProductionSystemAction action,EstadoAgente estadoAgente) throws IOException {
-        //TODO ver de ejecutar el tp 1 con ciertas reglas
         respuesta=(String) (action.getPeerRuleData().getRule().getThen());
-        printAll.accept(respuesta);
         printThen.accept(respuesta);
     }
 
