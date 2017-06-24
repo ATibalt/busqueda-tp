@@ -9,15 +9,8 @@ import frsf.cidici.faia.solver.productionsystem.*;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Agent;
 import frsf.cidisi.faia.agent.Perception;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
-/**
- *
- * @author USUARIO
- */
 public class Agente extends Agent{
 
     EstadoAgente estado;
@@ -62,7 +55,4 @@ public class Agente extends Agent{
         return maquinaInferencia.solve(arregloLista);
         
     }
-
-    
-    
 }

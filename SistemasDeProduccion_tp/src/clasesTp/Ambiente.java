@@ -8,10 +8,6 @@ package clasesTp;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.environment.Environment;
 
-/**
- *
- * @author USUARIO
- */
 public class Ambiente extends Environment {
     public Ambiente(EstadoAmbiente estado){
         super();
@@ -20,14 +16,9 @@ public class Ambiente extends Environment {
     @Override
     public Perception getPercept() {
         Percepcion percepcion = new Percepcion();
-        /*BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            perception.setInput(br.readLine());
-        } catch (IOException ex) {
-            Logger.getLogger(Ambiente.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+
         percepcion.setInput(((EstadoAmbiente)getEnvironmentState()).getinput());
-        //((EstadoAmbiente) getEnvironmentState()).setinput("chau");
+
         return percepcion;
     }
     

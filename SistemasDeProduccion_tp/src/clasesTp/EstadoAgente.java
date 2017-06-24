@@ -10,10 +10,6 @@ import frsf.cidisi.faia.state.AgentState;
 
 import java.util.Arrays;
 
-/**
- *
- * @author USUARIO
- */
 public class EstadoAgente extends AgentState{
     
     private String[] oracionPreprocesada;

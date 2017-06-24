@@ -9,11 +9,6 @@ import frsf.cidisi.faia.agent.Agent;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.environment.Environment;
 
-
-/**
- *
- * @author USUARIO
- */
 public class Percepcion extends Perception{
     private String input;
 

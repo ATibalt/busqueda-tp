@@ -39,7 +39,7 @@ public class ProductionSystem extends Solve{
 
             PeerRuleData reglaSeleccionada;
 
-            oracionProcesada= (String[]) params;
+            oracionProcesada = (String[]) params;
 
             //Se obtienen las reglas activas
             LinkedList<PeerRuleData> activeRules = this.match();
