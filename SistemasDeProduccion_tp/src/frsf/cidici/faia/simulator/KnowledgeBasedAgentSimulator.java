@@ -12,6 +12,7 @@ import clasesTp.Datos;
 import clasesTp.EstadoAgente;
 import java.io.IOException;
 import java.util.Vector;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,6 +23,8 @@ import java.util.logging.Logger;
 public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Simulator {
 
     private String respuesta;
+    private Consumer<String> printAll;
+    private Consumer<String> printThen;
 
     /**
 	 * Constructor.
@@ -47,10 +50,10 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
 	@Override
 	public void start() {
 
-        System.out.println("----------------------------------------------------");
-        System.out.println("--- " + this.getSimulatorName() + " ---");
-        System.out.println("----------------------------------------------------");
-        System.out.println();
+        printAll.accept("----------------------------------------------------");
+        printAll.accept("--- " + this.getSimulatorName() + " ---");
+        printAll.accept("----------------------------------------------------");
+        printAll.accept(" ");
 
         Perception perception;
         Action action = null;
@@ -61,17 +64,17 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
 
         //do {
 
-            System.out.println("------------------------------------");
+            printAll.accept("------------------------------------");
 
-            System.out.println("Sending perception to agent...");
+            printAll.accept("Sending perception to agent...");
             perception = this.getPercept();
             agent.see(perception);
-            System.out.println("Perception: " + perception);
+            printAll.accept("Perception: " + perception);
 
-            System.out.println("Agent State: " + agent.getAgentState());
-            System.out.println("Environment: " + environment);
+            printAll.accept("Agent State: " + agent.getAgentState());
+            printAll.accept("Environment: " + environment);
 
-            System.out.println("Asking the agent that start the learning process...");
+            printAll.accept("Asking the agent that start the learning process...");
             try {
                 action = agent.learn();
             } catch (Exception ex) {
@@ -79,11 +82,11 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
             }
 
             if (action == null)
-            	System.out.println("\nRule to execute: None");
+            	printAll.accept("\nRule to execute: None");
             else
             {
             	ProductionSystemAction act = (ProductionSystemAction) action;
-            	System.out.println("\nRule to execute: " + act.getPeerRuleData().getRule().getId());
+            	printAll.accept("\nRule to execute: " + act.getPeerRuleData().getRule().getId());
                 try {
                     imprimirThen(act, agent.getAgentState());
                 } catch (IOException ex) {
@@ -99,13 +102,13 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
 
         // Check what happened.
         if (this.finishForRule((ProductionSystemAction)action)) {
-            System.out.println("The agent has executed the finish rule.");
+            printAll.accept("The agent has executed the finish rule.");
         } else {
-            System.out.println("The agent has finished learning!");
+            printAll.accept("The agent has finished learning!");
         }
 
         // Leave a blank line
-        System.out.println();
+        printAll.accept(" ");
 
         // This call can be moved to the Simulator class
         this.environment.close();
@@ -146,11 +149,28 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
     private void imprimirThen(ProductionSystemAction action,EstadoAgente estadoAgente) throws IOException {
         //TODO ver de ejecutar el tp 1 con ciertas reglas
         respuesta=(String) (action.getPeerRuleData().getRule().getThen());
-        System.out.println(respuesta);
+        printAll.accept(respuesta);
+        printThen.accept(respuesta);
     }
 
     public String getRespuesta() {
         return respuesta;
     }
-    
+
+
+    public Consumer<String> getPrintAll() {
+        return printAll;
+    }
+
+    public void setPrintAll(Consumer<String> printAll) {
+        this.printAll = printAll;
+    }
+
+    public Consumer<String> getPrintThen() {
+        return printThen;
+    }
+
+    public void setPrintThen(Consumer<String> printThen) {
+        this.printThen = printThen;
+    }
 }
