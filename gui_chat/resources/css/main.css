@@ -1,0 +1,5 @@
+.main-grid {
+    -fx-padding: 20px;
+    -fx-vgap: 10px;
+    -fx-hgap: 10px;
+}

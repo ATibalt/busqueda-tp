@@ -6,6 +6,7 @@ import clasesTp.Datos;
 import clasesTp.Regla;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 /**
  * Clase que implementa el solver del sistema de producci�n.
@@ -18,6 +19,19 @@ public class ProductionSystem extends Solve{
     public static LinkedList<PeerRuleData> used = new LinkedList<PeerRuleData>();
     //oración ya procesada, es decir, las palabras claves (antecedentes de una regla)
     private String[] oracionProcesada = {};
+
+    public static void setPrintAll(Consumer<String> printAll) {
+        ProductionSystem.printAll = printAll;
+    }
+
+    public static void setPrintThen(Consumer<String> printThen) {
+        ProductionSystem.printThen = printThen;
+    }
+
+    public static Consumer<String> printAll = System.out::print;
+    public static Consumer<String> printThen = System.out::print;
+    
+    
 
     public static List<Regla> memoriaProduccion= Datos.cargarDatos();
 
@@ -50,24 +64,24 @@ public class ProductionSystem extends Solve{
                 //activeRules= Datos.getRestoEstimulos();
                 return null;
             
-            System.out.println("Reglas activas:");
+            printAll.accept("Reglas activas:");
              for(PeerRuleData reglaIterada : activeRules)
                     {
-                            System.out.print("(" + reglaIterada.getRule().getId() + ") ");
+                            printAll.accept("(" + reglaIterada.getRule().getId() + ") ");
                     }
             //Se resuelven los conflictos.
             for(Iterator<Criteria> i = criteria.iterator(); i.hasNext();)
             {
                 Criteria actualCriteria = i.next();
-                System.out.println("\nCriterio:" + actualCriteria.toString());
+                printAll.accept("\nCriterio:" + actualCriteria.toString());
                 LinkedList<PeerRuleData> finalRules = actualCriteria.apply(activeRules);
-                if(finalRules.size()==0) System.out.print("Reglas en Conflicto: -");
+                if(finalRules.size()==0) printAll.accept("Reglas en Conflicto: -");
                 else
                 {
-                    System.out.print("Reglas en Conflicto: ");
+                    printAll.accept("Reglas en Conflicto: ");
                     for(Iterator<PeerRuleData> j = finalRules.iterator(); j.hasNext();)
                     {
-                        System.out.print("(" + j.next().getRule().getId().toString() + ") ");
+                        printAll.accept("(" + j.next().getRule().getId().toString() + ") ");
                     }
                     activeRules = finalRules;
                     if(activeRules.size()==1) break;
