@@ -143,9 +143,9 @@ public class MainInterfaz extends Application {
 
     public void runRandom(){
         String[] claves = esquinas.keySet().toArray(new String[]{});
-        String claveInicio = claves[ThreadLocalRandom.current().nextInt(claves.length)];
         String claveFin = claves[ThreadLocalRandom.current().nextInt(claves.length)];
-        mapa.setPosicionAgente(esquinas.get(claveInicio));
+        mapa.setPosicionAgente(esquinas.get("e105"));
+        Config.painter.pintarEsquinaById("e105", "inicio");
         mapa.setPosicionAlerta(esquinas.get(claveFin));
         Thread thread = new Thread(startSimulator);
         thread.setDaemon(true);
