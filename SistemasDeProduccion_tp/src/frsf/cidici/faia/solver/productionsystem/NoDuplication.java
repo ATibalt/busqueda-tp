@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 /**
  * Clase que implementa el criterio de no duplicacion.
- * @author Grupo 12: Blas,María Julia / Diaz Ferreyra,Nicolas/ Sarli, Juan Leonardo.
+ * @author Grupo 12: Blas,Marï¿½a Julia / Diaz Ferreyra,Nicolas/ Sarli, Juan Leonardo.
  */
 public class NoDuplication extends Criteria {
 	
@@ -26,7 +26,7 @@ public class NoDuplication extends Criteria {
 
 	@Override
 	public String toString() {	
-		return "No Duplication (No duplicación)";
+		return "No Duplication (No duplicaciÃ³n)";
 	}
 
 	private boolean used(Rule r,Object d){
@@ -35,7 +35,7 @@ public class NoDuplication extends Criteria {
     		PeerRuleData prd = i.next();
     		Rule ru = prd.getRule();
     		Object du = prd.getData();
-    		if((r.getId().intValue()==ru.getId().intValue())&& (d.equals(du)))return true;
+    		if((r.getId().doubleValue()==ru.getId().doubleValue())&& (d.equals(du)))return true;
     	}
     	return false;
 	}

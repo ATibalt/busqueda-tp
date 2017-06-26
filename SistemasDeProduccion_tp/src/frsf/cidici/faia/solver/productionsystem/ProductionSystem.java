@@ -30,8 +30,6 @@ public class ProductionSystem extends Solve{
 
     public static Consumer<String> printAll = System.out::print;
     public static Consumer<String> printThen = System.out::print;
-    
-    
 
     public static List<Regla> memoriaProduccion= Datos.cargarDatos();
 

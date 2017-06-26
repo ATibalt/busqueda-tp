@@ -16,7 +16,6 @@ import java.util.Map;
  */
 public class Datos {
     static List<Regla> listaReglas;
-    //TODO static List<Regla> listaExcepcion;
     private static final String GPSFAMILIA = "Enviar posicion GPS a familiar y audio del incidente";
     private static final String GPSPOLICIA = "Enviar posicion GPS a policia y audio";
     private static final String LLAMA911 = "Llamar al 911 y dejar microfono abierto";
@@ -484,29 +483,6 @@ public class Datos {
         regla79.setId(36.2);
         listaReglas.add(regla79);
 
-        //listaExcepcion = new ArrayList<>();
-
-
-
         return listaReglas;
     }
-
-    /*
-    public static List<Regla> getListaExcepcion(){
-        return listaExcepcion;
-       
-        
-    }
-    public static void setListaExcepcion(){
-        listaExcepcion=new ArrayList<>();
-        List<String> condicion;
-        condicion= new ArrayList<>();
-        
-        condicion.add(" ");
-        
-               
-        Regla regla1 = new Regla(condicion, "Frase no reconocida");
-        regla1.setId(37.0);
-        listaExcepcion.add(regla1);
-*/
 }
