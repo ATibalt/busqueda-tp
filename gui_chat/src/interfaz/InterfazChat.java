@@ -1,10 +1,13 @@
 package interfaz;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -21,6 +24,8 @@ public class InterfazChat extends Application {
     private Consumer<String> simulator;
     private Consumer<Consumer<String>> printThenSetter;
     private Consumer<Consumer<String>> printAllSetter;
+    private String consoleAll;
+    private String consoleThen;
 
     public static InterfazChat waitForMainInterfaz() {
         try {
@@ -38,6 +43,8 @@ public class InterfazChat extends Application {
 
     public InterfazChat() {
         setMainInterfaz(this);
+        consoleAll = "";
+        consoleThen = "";
     }
 
     @Override
@@ -46,19 +53,44 @@ public class InterfazChat extends Application {
         primaryStage.setTitle("Patrullero");
         Scene mainScene = new Scene(root, 730, 600);
 
-        Button btnProcesar =  (Button)mainScene.lookup("#btnProcesar");
-        btnProcesar.setOnAction(value -> {
-            TextField inputField = (TextField) mainScene.lookup("#input");
-            simulator.accept(inputField.getText());
-        });
-
         TextArea salida = (TextArea)mainScene.lookup("#salida");
-        Consumer<String> print = input -> {
+        CheckBox mostrarTodo = (CheckBox)mainScene.lookup("#simulador");
+        mostrarTodo.setOnAction(value -> {
+            salida.clear();
+            if (mostrarTodo.isSelected())
+                salida.appendText(consoleAll);
+            else
+                salida.appendText(consoleThen);
+        });
+        Consumer<String> printAll = input -> {
+            consoleAll += input;
+            consoleAll += "\n";
+            if (mostrarTodo.isSelected()) {
+                salida.appendText(input);
+                salida.appendText("\n");
+            }
+        };
+        Consumer<String> printThen = input -> {
+            consoleThen += input;
+            consoleThen += "\n";
+            consoleAll += input;
+            consoleAll += "\n";
             salida.appendText(input);
             salida.appendText("\n");
         };
-        printAllSetter.accept(print);
-        printThenSetter.accept(print);
+        printAllSetter.accept(printAll);
+        printThenSetter.accept(printThen);
+
+        Button btnProcesar =  (Button)mainScene.lookup("#btnProcesar");
+        TextField inputField = (TextField) mainScene.lookup("#input");
+        EventHandler<ActionEvent> onProcesar = value -> {
+            printThen.accept("Frase ingresada: " + inputField.getText());
+            simulator.accept(inputField.getText());
+            inputField.clear();
+
+        };
+        btnProcesar.setOnAction(onProcesar);
+        inputField.setOnAction(onProcesar);
 
         primaryStage.setScene(mainScene);
         primaryStage.setResizable(false);
