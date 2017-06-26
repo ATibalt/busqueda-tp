@@ -9,10 +9,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="main-grid" stylesheets="/css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.layout.Pane?>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="main-grid" stylesheets="/css/mainchat.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
        <CheckBox fx:id="simulador" mnemonicParsing="false" text="Mostrar salida del simulador" />
-       <TextArea fx:id="salida" editable="false" prefHeight="500.0" prefWidth="700.0" GridPane.rowIndex="1" />
+       <Pane prefHeight="500.0" prefWidth="700.0" GridPane.rowIndex="1">
+           <children>
+               <TextArea fx:id="salida" editable="false" prefHeight="500.0" prefWidth="700.0" />
+               <Button layoutX="645" fx:id="btnLimpiar" mnemonicParsing="false" text="Limpiar" />
+           </children>
+       </Pane>
        <HBox prefWidth="700.0" spacing="10.0" GridPane.rowIndex="2">
            <children>
                <TextField fx:id="input" prefWidth="100.0" HBox.hgrow="ALWAYS" />

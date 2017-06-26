@@ -1,6 +1,8 @@
 package frsf.cidici.faia.simulator;
 
 import frsf.cidici.faia.solver.productionsystem.ProductionSystemAction;
+import frsf.cidisi.exercise.modelo.search.Patrullero;
+import frsf.cidisi.exercise.modelo.search.PatrulleroMain;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.agent.Agent;
 import frsf.cidisi.faia.agent.Perception;
@@ -81,8 +83,10 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
                 Logger.getLogger(KnowledgeBasedAgentSimulator.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            if (action == null)
-            	printAll.accept("\nRule to execute: None - No se detecto ningun incidente para dicha frase");
+            if (action == null) {
+                printAll.accept("\nRule to execute: None");
+                printThen.accept("No se detecto ningun incidente para dicha frase");
+            }
             else
             {
             	ProductionSystemAction act = (ProductionSystemAction) action;
@@ -128,7 +132,14 @@ public class KnowledgeBasedAgentSimulator extends frsf.cidisi.faia.simulator.Sim
                 || idRegla == 15.1|| idRegla == 17.0|| idRegla == 18.0|| idRegla == 19.1 || idRegla == 22.0|| idRegla == 25.0
                 || idRegla == 27.1|| idRegla == 28.1|| idRegla == 29.0|| idRegla == 30.1|| idRegla == 31.0|| idRegla == 32.1
                 || idRegla == 33.1|| idRegla == 34.0|| idRegla == 35.1|| idRegla == 36.2){
-            //TODO: Ejecutar tp 1
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        PatrulleroMain.main(new String[]{"random"});
+                    } catch(Exception e) { System.out.printf("Error simulador: %s", e); }
+                }
+            }.start();
         }
     }
 

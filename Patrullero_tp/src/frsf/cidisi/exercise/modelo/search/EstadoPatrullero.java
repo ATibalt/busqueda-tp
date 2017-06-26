@@ -101,7 +101,6 @@ public class EstadoPatrullero extends SearchBasedAgentState {
 
         str += "\n			Posicion de la alerta: "+this.posicionAlerta.toString();
         str += "\n			Posicion del agente: "+this.posicionAgente.toString();
-        str += "\n			Combustible restante: "+this.combustible.toString();
         return str;
     }
 

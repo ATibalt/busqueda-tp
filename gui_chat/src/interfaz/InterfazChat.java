@@ -1,6 +1,7 @@
 package interfaz;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 import java.util.concurrent.CountDownLatch;
@@ -26,6 +28,7 @@ public class InterfazChat extends Application {
     private Consumer<Consumer<String>> printAllSetter;
     private String consoleAll;
     private String consoleThen;
+    private String ultimaFrase;
 
     public static InterfazChat waitForMainInterfaz() {
         try {
@@ -45,11 +48,12 @@ public class InterfazChat extends Application {
         setMainInterfaz(this);
         consoleAll = "";
         consoleThen = "";
+        ultimaFrase = "";
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/mainchat.fxml"));
         primaryStage.setTitle("Patrullero");
         Scene mainScene = new Scene(root, 730, 600);
 
@@ -66,8 +70,10 @@ public class InterfazChat extends Application {
             consoleAll += input;
             consoleAll += "\n";
             if (mostrarTodo.isSelected()) {
-                salida.appendText(input);
-                salida.appendText("\n");
+                Platform.runLater(() -> {
+                    salida.appendText(input);
+                    salida.appendText("\n");
+                });
             }
         };
         Consumer<String> printThen = input -> {
@@ -75,8 +81,11 @@ public class InterfazChat extends Application {
             consoleThen += "\n";
             consoleAll += input;
             consoleAll += "\n";
-            salida.appendText(input);
-            salida.appendText("\n");
+
+            Platform.runLater(() -> {
+                salida.appendText(input);
+                salida.appendText("\n");
+            });
         };
         printAllSetter.accept(printAll);
         printThenSetter.accept(printThen);
@@ -86,11 +95,25 @@ public class InterfazChat extends Application {
         EventHandler<ActionEvent> onProcesar = value -> {
             printThen.accept("Frase ingresada: " + inputField.getText());
             simulator.accept(inputField.getText());
+            ultimaFrase = inputField.getText();
             inputField.clear();
 
         };
         btnProcesar.setOnAction(onProcesar);
         inputField.setOnAction(onProcesar);
+        inputField.setOnKeyReleased(value -> {
+            if(value.getCode() == KeyCode.UP)
+                inputField.setText(ultimaFrase);
+            else if(value.getCode() == KeyCode.DOWN)
+                inputField.clear();
+        });
+
+        Button btnLimpiar = (Button)mainScene.lookup("#btnLimpiar");
+        btnLimpiar.setOnAction(value -> {
+            salida.clear();
+            consoleAll = "";
+            consoleThen = "";
+        });
 
         primaryStage.setScene(mainScene);
         primaryStage.setResizable(false);

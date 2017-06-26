@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class MainInterfaz extends Application {
     public static final CountDownLatch latch = new CountDownLatch(1);
@@ -138,6 +139,17 @@ public class MainInterfaz extends Application {
     public void init(Runnable startSimulator, Mapa mapa) {
         this.startSimulator = startSimulator;
         this.mapa = mapa;
+    }
+
+    public void runRandom(){
+        String[] claves = esquinas.keySet().toArray(new String[]{});
+        String claveInicio = claves[ThreadLocalRandom.current().nextInt(claves.length)];
+        String claveFin = claves[ThreadLocalRandom.current().nextInt(claves.length)];
+        mapa.setPosicionAgente(esquinas.get(claveInicio));
+        mapa.setPosicionAlerta(esquinas.get(claveFin));
+        Thread thread = new Thread(startSimulator);
+        thread.setDaemon(true);
+        thread.start();
     }
 
     private Esquina getEsquinaById(String id) {
