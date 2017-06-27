@@ -25,16 +25,15 @@ public class Regla extends Rule {
         int cantidadEncontrada=0;
         List<String> condicion = (List<String>)this.getCondition();
 
-        if(condicion.size() != oracion.size()){
-            return false;
-        }
-
-        for(int i = 0; i < condicion.size(); i++ ){
-            if(condicion.get(i).toLowerCase().equals(oracion.get(i).toLowerCase())){
+        for(int i = 0; i < oracion.size(); i++ ){
+            if(condicion.contains(oracion.get(i))){
                 cantidadEncontrada++;
             }
         }
-        return  cantidadEncontrada == condicion.size();
+        if(cantidadEncontrada == 0)
+            return false;
+
+        return  cantidadEncontrada == condicion.size() ;
     }
     
     

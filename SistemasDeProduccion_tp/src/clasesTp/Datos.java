@@ -117,6 +117,7 @@ public class Datos {
         listaReglas.add(regla14);
         
         listaCondicion= new ArrayList<>();
+        listaCondicion.add("dale");
         listaCondicion.add("tener");
         listaCondicion.add("arma");
        
@@ -270,6 +271,19 @@ public class Datos {
         Regla regla38 = new Regla(listaCondicion,GPSPOLICIA);
         regla38.setId(19.1);
         listaReglas.add(regla38);
+
+        listaCondicion= new ArrayList<>();
+        listaCondicion.add("ayudar");
+        listaCondicion.add("estar");
+        listaCondicion.add("dañar");
+
+        Regla regla80 = new Regla(listaCondicion,LLAMA911);
+        regla80.setId(37.0);
+        listaReglas.add(regla80);
+
+        Regla regla81 = new Regla(listaCondicion,GPSPOLICIA);
+        regla81.setId(37.1);
+        listaReglas.add(regla81);
         
         listaCondicion= new ArrayList<>();
         listaCondicion.add("pegar");
@@ -297,7 +311,7 @@ public class Datos {
         listaCondicion= new ArrayList<>();
         listaCondicion.add("hacer");
         listaCondicion.add("soltar");
-        listaCondicion.add("cuchillo");
+        listaCondicion.add("arma");
        
         Regla regla43 = new Regla(listaCondicion,SONARALARMAGPSPOLICIA);
         regla43.setId(22.0);
@@ -308,6 +322,7 @@ public class Datos {
         listaReglas.add(regla44);
         
         listaCondicion= new ArrayList<>();
+        listaCondicion.add("dejar");
         listaCondicion.add("gritar");
        
         Regla regla45 = new Regla(listaCondicion,LLAMAFAMILIA);
